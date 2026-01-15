@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap");
+
+.apex-hero {
+  position: relative;
+
+
+  width: 100vw;
+  min-height: calc(100vh - 91px);
+
+font-family: "Metafora", system-ui, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  overflow: hidden;
+}
+
+
+.apex-hero-bg {
+  position: absolute;
+  inset: 0;
+
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+ 
+  transform: scale(1.02);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.apex-hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  
+
+  filter: blur(12px);
+  opacity: 0.55;
+}
+
+.apex-hero-inner {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.apex-hero-title {
+  margin: 0;
+  font-size: clamp(70px, 4.2vw, 56px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: 0.5rem;
+  color: #ffffff;
+
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+
+.apex-hero-subtitle {
+  margin: 18px auto 0;
+  max-width: 72ch;
+  font-size: clamp(22px, 1.4vw, 18px);
+  line-height: 1.7;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
+
+  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
+
+
+.apex-hero-btn {
+  margin-top: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 28px;
+  border-radius: 999px;
+
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(15, 23, 42, 0.95);
+
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.apex-hero-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+}
+
+.apex-hero-btn:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 600px) {
+  .apex-hero-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}

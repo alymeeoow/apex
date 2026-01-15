@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@font-face {
+  font-family: "Metafora";
+  src: url("./fonts/metafora-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "OstrichBlack";
+  src: url("./fonts/ostrich-black.ttf") format("truetype");
+  
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html{
+
+  overflow-x: hidden;
+}
+
+*{
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
+
+}
+
+
+:root {
+  
+
+  --cs-bg-1: rgba(210, 232, 255, 0.9);
+  --cs-bg-2: rgba(234, 245, 255, 0.75);
+  --cs-bg-3: rgba(247, 250, 255, 1);
+  --cs-bg-4: rgba(252, 253, 255, 1);
+
+
+  --cs-glow-1: rgba(145, 190, 255, 0.55);
+  --cs-glow-2: rgba(200, 235, 255, 0.22);
+  --cs-glow-3: rgba(255, 255, 255, 0);
+
+  --cs-haze-1: rgba(220, 240, 255, 0.65);
+  --cs-haze-2: rgba(255, 255, 255, 0);
+
+  --cs-title: #1f2a37;
+  --cs-subtitle: #6b7c93;
+
+   --primary-dark: #0a1628;
+  --primary: #1e3a5f;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border: #e5e7eb;
+  --bg-subtle: #f8fafc;
+
+
+
+  --border: rgba(17, 24, 39, 0.10);
+  --bg-subtle: #f8fafc;
+
+  --shadow: 0 18px 48px rgba(17, 24, 39, 0.10);
+  --radius: 16px;
+
+  --shell-max: 1400px;
+  --shell-pad: 64px;
+
+  --side-col: clamp(420px, 38vw, 560px);
+  --gap: clamp(26px, 4vw, 80px);
+  --img-h: clamp(320px, 34vw, 520px);
+
+  --text-max: 920px;
+
+  --reveal-dur: 760ms;
+  --reveal-ease: cubic-bezier(.2,.9,.2,1);
+  --reveal-distance: 18px;
+  --reveal-stagger: 120ms;
+}
+
