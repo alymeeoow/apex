@@ -5,14 +5,10 @@
   top: 0;
   z-index: 50;
   font-family: "Inter", system-ui, sans-serif;
-
-  /* base sky */
   background: linear-gradient(180deg, #eef7ff 0%, #dbeafb 100%);
   border-bottom: 1px solid rgba(12, 42, 84, 0.10);
-
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
   overflow: hidden;
 }
 
@@ -20,9 +16,7 @@
   border-bottom-color: rgba(12, 42, 84, 0.18);
 }
 
-/* ================================
-   OCEAN + MOUNTAIN SCENE LAYERS
-================================ */
+
 .apex-header-scene {
   position: absolute;
   inset: 0;
@@ -30,14 +24,13 @@
   z-index: 0;
 }
 
-/* Mountains: soft angular ridge using clip-path */
+
 .apex-header-mountains {
   position: absolute;
   left: 0;
   right: 0;
   top: -8px;
   height: 80px;
-
   background: linear-gradient(180deg, rgba(8, 33, 64, 0.10), rgba(8, 33, 64, 0.02));
   clip-path: polygon(
     0% 80%,
@@ -57,7 +50,7 @@
   opacity: 0.9;
 }
 
-/* Ocean band */
+
 .apex-header-ocean {
   position: absolute;
   left: -10%;
@@ -72,7 +65,6 @@
     rgba(7, 33, 69, 0.16) 100%
   );
 
-  /* wave-like top */
   clip-path: polygon(
     0% 45%,
     8% 55%,
@@ -95,7 +87,7 @@
   filter: blur(0.2px);
 }
 
-/* soft glow like sun haze */
+
 .apex-header-glow {
   position: absolute;
   top: -120px;
@@ -106,9 +98,7 @@
   opacity: 0.7;
 }
 
-/* ================================
-   INNER
-================================ */
+
 .apex-header-inner {
   position: relative;
   z-index: 1;
@@ -124,9 +114,7 @@
   gap: 18px;
 }
 
-/* ================================
-   BRAND
-================================ */
+
 .apex-header-brand {
   display: flex;
   align-items: center;
@@ -147,7 +135,7 @@
     drop-shadow(0 4px 8px rgba(12, 42, 84, 0.15));
 }
 
-/* wordmark */
+
 .apex-header-word {
   width: 500px;
   height: auto;
@@ -156,9 +144,7 @@
   flex-shrink: 0;
 }
 
-/* ================================
-   NAV WRAP
-================================ */
+
 .apex-header-navWrap {
   display: flex;
   align-items: center;
@@ -181,9 +167,7 @@
   gap: 0;
 }
 
-/* ================================
-   LINKS
-================================ */
+
 .apex-header-link {
   position: relative;
   font-size: 16px;
@@ -195,7 +179,7 @@
   transition: color 0.2s ease;
 }
 
-/* underline hover */
+
 .apex-header-link::after {
   content: "";
   position: absolute;
@@ -209,6 +193,7 @@
   transition: width 0.25s ease;
 }
 
+
 .apex-header-link:hover {
   color: #03193d;
 }
@@ -217,23 +202,30 @@
   width: 100%;
 }
 
+
+.apex-header-link.is-active {
+  color: #03193d;              
+  font-weight: 600;            
+}
+
+.apex-header-link.is-active::after {
+  width: 100%;              
+}
+
+
 .apex-header-link--empower {
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
-/* ================================
-   ACTIONS
-================================ */
+
 .apex-header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* ================================
-   MOBILE MENU
-================================ */
+
 .apex-header-menuBtn {
   display: none;
   width: 40px;
@@ -263,9 +255,7 @@
 .apex-header-menuIcon::before { top: -6px; }
 .apex-header-menuIcon::after { top: 6px; }
 
-/* ================================
-   RESPONSIVE
-================================ */
+
 @media (max-width: 860px) {
   .apex-header-navWrap {
     display: none;

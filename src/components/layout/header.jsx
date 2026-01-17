@@ -1,8 +1,9 @@
-// Header.jsx
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "../../assets/styles/layout/header.css";
-import logo from "../../assets/images/apex-transparent.png";
-import logoWord from "../../assets/images/apex-tide-word.png";
+
+import logo from "../../assets/images/logo/apex-transparent.png";
+import logoWord from "../../assets/images/logo/apex-tide-word.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,9 +15,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const linkClass = ({ isActive }) =>
+    `apex-header-link ${isActive ? "is-active" : ""}`;
+
+  const empowerClass = ({ isActive }) =>
+    `apex-header-link apex-header-link--empower ${isActive ? "is-active" : ""}`;
+
   return (
     <header className={`apex-header ${isScrolled ? "is-scrolled" : ""}`}>
- 
       <div className="apex-header-scene" aria-hidden="true">
         <div className="apex-header-mountains" />
         <div className="apex-header-ocean" />
@@ -24,18 +30,32 @@ export default function Header() {
       </div>
 
       <div className="apex-header-inner">
-        <a className="apex-header-brand" href="/" aria-label="APEX Home">
+        <NavLink className="apex-header-brand" to="/" aria-label="APEX Home">
           <img src={logo} alt="APEX logo" className="apex-header-logo" />
-          <img src={logoWord} alt="APEX logoWord" className="apex-header-word" />
-        </a>
+          <img src={logoWord} alt="APEX wordmark" className="apex-header-word" />
+        </NavLink>
 
         <div className="apex-header-navWrap" aria-label="Primary navigation">
           <nav className="apex-header-nav">
-            <a className="apex-header-link" href="#features">HOME</a>
-            <a className="apex-header-link" href="#pricing">ABOUT</a>
-            <a className="apex-header-link" href="#about">SERVICES</a>
-            <a className="apex-header-link" href="#contact">CONTACT</a>
-            <a className="apex-header-link" href="#faq">FAQ</a>
+            <NavLink to="/" end className={linkClass}>
+              HOME
+            </NavLink>
+
+            <NavLink to="/about" className={linkClass}>
+              ABOUT
+            </NavLink>
+
+            <NavLink to="/services" className={linkClass}>
+              SERVICES
+            </NavLink>
+
+            <NavLink to="/contact" className={linkClass}>
+              CONTACT
+            </NavLink>
+
+            <NavLink to="/faq" className={linkClass}>
+              FAQ
+            </NavLink>
           </nav>
 
           <span className="apex-header-divider" aria-hidden="true" />
@@ -44,12 +64,9 @@ export default function Header() {
             className="apex-header-nav apex-header-nav--right"
             aria-label="Empowerment navigation"
           >
-            <a
-              className="apex-header-link apex-header-link--empower"
-              href="#empowerment"
-            >
+            <NavLink to="/empowerment" className={empowerClass}>
               EMPOWERMENT
-            </a>
+            </NavLink>
           </nav>
         </div>
 
