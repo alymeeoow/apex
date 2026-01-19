@@ -2,83 +2,41 @@
 import React from "react";
 import "../../../assets/styles/pages/services.css";
 
-import ServicesHero from "./serviceHero";
-
-
-import {
-  MdMic,
-  MdGroups,
-  MdPodcasts,
-  MdWorkspaces,
-  MdOutlineLiveTv,
-} from "react-icons/md";
+// ✅ react-icons (install: npm i react-icons)
+import { MdMic, MdGroups, MdPodcasts, MdWorkspaces, MdOutlineLiveTv } from "react-icons/md";
 
 function MiniIcon({ name }) {
   return (
     <svg className="svc-miniIco" viewBox="0 0 24 24" aria-hidden="true">
       {name === "modal" && (
         <>
-          <path
-            d="M6 16h12"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            opacity="0.75"
-          />
+          <path d="M6 16h12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" opacity="0.75" />
           <rect x="6" y="7" width="7" height="7" rx="2" fill="currentColor" opacity="0.18" />
           <rect x="14" y="7" width="4" height="7" rx="2" fill="currentColor" opacity="0.18" />
           <circle cx="9" cy="17" r="1.6" fill="currentColor" opacity="0.9" />
           <circle cx="15.5" cy="17" r="1.6" fill="currentColor" opacity="0.7" />
         </>
       )}
-
       {name === "process" && (
         <>
           <rect x="6" y="5" width="12" height="14" rx="4" fill="currentColor" opacity="0.18" />
-          <path
-            d="M9 9h6M9 13h4M9 17h6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.8"
-          />
+          <path d="M9 9h6M9 13h4M9 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
         </>
       )}
-
       {name === "fractional" && (
         <>
           <circle cx="9" cy="10" r="3" fill="currentColor" opacity="0.18" />
           <rect x="13" y="7" width="5" height="6" rx="2" fill="currentColor" opacity="0.18" />
-          <path
-            d="M6 17h12"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            opacity="0.8"
-          />
+          <path d="M6 17h12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" opacity="0.8" />
         </>
       )}
-
       {name === "speaking" && (
         <>
           <rect x="4" y="6" width="16" height="10" rx="5" fill="currentColor" opacity="0.18" />
-          <path
-            d="M8 16c2.2 1.6 5.8 1.6 8 0"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.82"
-          />
-          <path
-            d="M12 6v3"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.55"
-          />
+          <path d="M8 16c2.2 1.6 5.8 1.6 8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.82" />
+          <path d="M12 6v3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
         </>
       )}
-
       {name === "spark" && (
         <>
           <path
@@ -110,6 +68,7 @@ function LaneCard({ icon, title, desc, items }) {
             <p className="svc-laneDesc">{desc}</p>
           </div>
         </div>
+
         <div className="svc-laneMeta" aria-hidden="true" />
       </header>
 
@@ -151,8 +110,68 @@ export default function Services() {
 
   return (
     <main className="apex-services">
-      {/* ✅ NEW FULL HERO */}
-      <ServicesHero />
+      {/* HERO */}
+      <section className="svc-hero" aria-label="Services header">
+        <div className="svc-shell">
+          <div className="svc-heroInner">
+            <div className="svc-heroCopy">
+              <div className="svc-heroEyebrow">
+            
+              </div>
+
+              <h1 className="svc-h1">Our Services</h1>
+
+              <p className="svc-lead">
+                Clear offerings, built for logistics teams. Pick a lane, mix what you need, and ship outcomes—without noise.
+              </p>
+
+              <div className="svc-heroBadges">
+                <span className="svc-badge">
+                  <MiniIcon name="speaking" />
+                  Speaking Engagement
+                </span>
+                <span className="svc-badge">
+                  <MiniIcon name="spark" />
+                  Course Development
+                </span>
+                <span className="svc-badge">
+                  <MiniIcon name="modal" />
+                  Modal Expertise
+                </span>
+                <span className="svc-badge">
+                  <MiniIcon name="process" />
+                  Process Development
+                </span>
+                <span className="svc-badge">
+                  <MiniIcon name="fractional" />
+                  Fractional Leadership
+                </span>
+              </div>
+            </div>
+
+            <div className="svc-heroAside" aria-hidden="true">
+              <div className="svc-metric">
+                <div className="svc-metricNum">01</div>
+                <div className="svc-metricLabel">Pick a lane</div>
+              </div>
+              <div className="svc-metric">
+                <div className="svc-metricNum">02</div>
+                <div className="svc-metricLabel">Mix &amp; match</div>
+              </div>
+              <div className="svc-metric">
+                <div className="svc-metricNum">03</div>
+                <div className="svc-metricLabel">Execute</div>
+              </div>
+            </div>
+
+            <div className="svc-heroDecor" aria-hidden="true">
+              <div className="svc-orb svc-orb--a" />
+              <div className="svc-orb svc-orb--b" />
+              <div className="svc-gridGlow" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SPEAKING */}
       <section className="svc-section">
@@ -184,10 +203,10 @@ export default function Services() {
               <div className="svc-kicker">Speaking Engagement</div>
               <h2 className="svc-h2">High-signal sessions that don’t waste the room.</h2>
               <p className="svc-p">
-                Built for logistics audiences—direct, practical, and tailored to the format.
-                Use it to align leaders, sharpen teams, and move decisions forward.
+                Built for logistics audiences—direct, practical, and tailored to the format. Use it to align leaders, sharpen teams, and move decisions forward.
               </p>
 
+              {/* ✅ react-icons */}
               <div className="svc-chipList">
                 <span className="svc-chip">
                   <MdWorkspaces className="svc-chipIco" aria-hidden="true" />
@@ -239,8 +258,7 @@ export default function Services() {
                 <h2 className="svc-h2 svc-h2--light">Curriculum that teams can run without you.</h2>
               </div>
               <p className="svc-courseLead">
-                Built as modular tracks so companies can onboard, reinforce, and measure performance—without
-                creating “training theater.”
+                Built as modular tracks so companies can onboard, reinforce, and measure performance—without creating “training theater.”
               </p>
             </div>
 
@@ -282,6 +300,7 @@ export default function Services() {
         </div>
       </section>
 
+      {/* BOTTOM */}
       <section className="svc-section svc-section--tight">
         <div className="svc-shell">
           <div className="svc-center">

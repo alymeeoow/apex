@@ -116,11 +116,17 @@ export default function Empowerment() {
                   </div>
                 </div>
               </div>
+                 <div className="empower-card empower-card--accent1 ">
+                    <p>That is leadership.</p>
+                    <p>That is impact.</p>
+                    <p>And that is why she deserves the Empowering Women into Logistics Award.</p>
+                  </div>
             </aside>
 
             {/* RIGHT */}
             <div className="empower-right">
               <div className="empower-rail">
+                          <div className="empower-eyebrow">CHOSEN</div>
                 <h2 className="empower-title">If Chosen: Amplifying the Impact</h2>
 
                 <div className="empower-card empower-card--soft">
@@ -148,11 +154,7 @@ export default function Empowerment() {
                     leadership roles because someone like her showed them it was possible.
                   </p>
 
-                  <div className="empower-affirm">
-                    <p>That is leadership.</p>
-                    <p>That is impact.</p>
-                    <p>And that is why she deserves the Empowering Women into Logistics Award.</p>
-                  </div>
+               
 
                   <p>
                     I know I am biased, as I love her and am married to her, but there is no one
@@ -163,10 +165,7 @@ export default function Empowerment() {
                   </p>
                 </div>
 
-                <a className="empower-cta" href="/contact">
-                  <span>Connect</span>
-                  <MdArrowOutward aria-hidden="true" />
-                </a>
+             
               </div>
             </div>
           </div>

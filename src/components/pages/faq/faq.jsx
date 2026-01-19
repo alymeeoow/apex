@@ -1,5 +1,5 @@
 // FAQ.jsx
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "../../../assets/styles/pages/faq.css";
 import { MdArrowOutward } from "react-icons/md";
 
@@ -7,31 +7,26 @@ export default function FAQ() {
   const faqs = useMemo(
     () => [
       {
+        category: "General",
         q: "Who do you typically work with?",
         a: (
           <>
             <p>We work with:</p>
             <ul>
-              <li>
-                Transportation and logistics companies (3PLs, brokerages,
-                asset-based carriers)
-              </li>
+              <li>Transportation and logistics companies (3PLs, brokerages, asset-based carriers)</li>
               <li>Shippers and supply-chain organizations</li>
               <li>Industry associations and professional organizations</li>
-              <li>
-                Technology and service providers supporting the logistics
-                ecosystem
-              </li>
+              <li>Technology and service providers supporting the logistics ecosystem</li>
             </ul>
             <p>
-              Most of our clients are growth-minded organizations that have
-              outgrown informal processes and need structure without
-              bureaucracy.
+              Most of our clients are growth-minded organizations that have outgrown informal processes and need
+              structure without bureaucracy.
             </p>
           </>
         ),
       },
       {
+        category: "General",
         q: "What makes Apex Tide different from other consultants?",
         a: (
           <>
@@ -44,14 +39,14 @@ export default function FAQ() {
               <li>Metric-driven (performance, ROI, and accountability matter)</li>
             </ul>
             <p>
-              We blend strategic thinking with real-world operational
-              experience, so what we build actually works in day-to-day
-              environments.
+              We blend strategic thinking with real-world operational experience, so what we build actually works in
+              day-to-day environments.
             </p>
           </>
         ),
       },
       {
+        category: "Services",
         q: "What types of projects do you take on?",
         a: (
           <>
@@ -59,32 +54,24 @@ export default function FAQ() {
             <ul>
               <li>Go-to-market and sales strategy development</li>
               <li>Marketing strategy, positioning, and content frameworks</li>
-              <li>
-                Learning &amp; development programs and training architecture
-              </li>
-              <li>
-                Organizational structure, role clarity, and performance metrics
-              </li>
+              <li>Learning &amp; development programs and training architecture</li>
+              <li>Organizational structure, role clarity, and performance metrics</li>
               <li>Change management and operational process design</li>
-              <li>
-                Executive facilitation, workshops, and industry education
-              </li>
+              <li>Executive facilitation, workshops, and industry education</li>
             </ul>
-            <p>
-              Projects range from short-term strategic sprints to longer-term
-              advisory partnerships.
-            </p>
+            <p>Projects range from short-term strategic sprints to longer-term advisory partnerships.</p>
           </>
         ),
       },
       {
+        category: "Positioning",
         q: "Is Apex Tide a marketing firm, a sales consultancy, or an operations consultancy?",
         a: (
           <>
             <p>Yes, and intentionally so.</p>
             <p>
-              Transportation organizations don’t operate in silos, and neither
-              do we. Apex Tide works at the intersection of:
+              Transportation organizations don’t operate in silos, and neither do we. Apex Tide works at the
+              intersection of:
             </p>
             <ul>
               <li>Sales</li>
@@ -92,14 +79,12 @@ export default function FAQ() {
               <li>Operations</li>
               <li>Leadership</li>
             </ul>
-            <p>
-              Our role is often to connect the dots between teams so strategies
-              don’t break down during execution.
-            </p>
+            <p>Our role is often to connect the dots between teams so strategies don’t break down during execution.</p>
           </>
         ),
       },
       {
+        category: "Clients",
         q: "Do you work with companies of a certain size?",
         a: (
           <>
@@ -108,19 +93,14 @@ export default function FAQ() {
             <ul>
               <li>Small to mid-sized organizations preparing to scale</li>
               <li>Mid-market companies refining structure and performance</li>
-              <li>
-                Industry organizations building education, programs, or member
-                value
-              </li>
+              <li>Industry organizations building education, programs, or member value</li>
             </ul>
-            <p>
-              What matters most is readiness for clarity, accountability, and
-              follow-through.
-            </p>
+            <p>What matters most is readiness for clarity, accountability, and follow-through.</p>
           </>
         ),
       },
       {
+        category: "Process",
         q: "What does a typical engagement look like?",
         a: (
           <>
@@ -132,34 +112,31 @@ export default function FAQ() {
               <li>Market conditions</li>
             </ul>
             <p>
-              From there, we design a clear scope with defined outcomes,
-              deliverables, and timelines. Clients always know what’s being
-              built, why it matters, and how success will be measured.
+              From there, we design a clear scope with defined outcomes, deliverables, and timelines. Clients always
+              know what’s being built, why it matters, and how success will be measured.
             </p>
           </>
         ),
       },
       {
+        category: "Outcomes",
         q: "How do you measure success?",
         a: (
           <>
-            <p>
-              Success looks different for every client, but typically includes:
-            </p>
+            <p>Success looks different for every client, but typically includes:</p>
             <ul>
               <li>Clearer roles and responsibilities</li>
               <li>Improved cross-functional alignment</li>
               <li>Stronger execution and follow-through</li>
               <li>Better use of time, tools, and talent</li>
-              <li>
-                Measurable performance improvements tied to business goals
-              </li>
+              <li>Measurable performance improvements tied to business goals</li>
             </ul>
-            <p>We believe clarity is a leading indicator of performance</p>
+            <p>We believe clarity is a leading indicator of performance.</p>
           </>
         ),
       },
       {
+        category: "Services",
         q: "Do you offer training or just strategy?",
         a: (
           <>
@@ -171,14 +148,12 @@ export default function FAQ() {
               <li>Playbooks and toolkits</li>
               <li>Ongoing coaching and support</li>
             </ul>
-            <p>
-              Strategy without enablement doesn’t stick, and we don’t leave
-              clients with shelfware.
-            </p>
+            <p>Strategy without enablement doesn’t stick, and we don’t leave clients with shelfware.</p>
           </>
         ),
       },
       {
+        category: "Focus",
         q: "What industries do you specialize in?",
         a: (
           <>
@@ -190,14 +165,14 @@ export default function FAQ() {
               <li>Freight, brokerage, and logistics technology</li>
             </ul>
             <p>
-              This specialization allows us to move faster, ask better
-              questions, and build solutions that reflect industry realities,
-              not assumptions.
+              This specialization allows us to move faster, ask better questions, and build solutions that reflect
+              industry realities, not assumptions.
             </p>
           </>
         ),
       },
       {
+        category: "Services",
         q: "Are you available for speaking, workshops, or industry events?",
         a: (
           <>
@@ -208,14 +183,12 @@ export default function FAQ() {
               <li>Sales and marketing training sessions</li>
               <li>Industry conferences and association programs</li>
             </ul>
-            <p>
-              We’re known for sessions that are practical, engaging, and
-              immediately applicable.
-            </p>
+            <p>We’re known for sessions that are practical, engaging, and immediately applicable.</p>
           </>
         ),
       },
       {
+        category: "Approach",
         q: "What is it like to work with you?",
         a: (
           <>
@@ -227,14 +200,12 @@ export default function FAQ() {
               <li>Calm in complexity</li>
               <li>Focused on long-term impact, not quick fixes</li>
             </ul>
-            <p>
-              We challenge assumptions when needed, and always with the goal of
-              strengthening the outcome
-            </p>
+            <p>We challenge assumptions when needed, and always with the goal of strengthening the outcome.</p>
           </>
         ),
       },
       {
+        category: "Fit",
         q: "How do we know if Apex Tide is the right fit?",
         a: (
           <>
@@ -250,14 +221,14 @@ export default function FAQ() {
         ),
       },
       {
+        category: "Getting Started",
         q: "How do we get started?",
         a: (
           <>
             <p>The best first step is a conversation.</p>
             <p>
-              We’ll talk through your goals, challenges, and priorities and
-              determine whether there’s a meaningful way we can support your
-              business.
+              We’ll talk through your goals, challenges, and priorities and determine whether there’s a meaningful way
+              we can support your business.
             </p>
           </>
         ),
@@ -266,7 +237,24 @@ export default function FAQ() {
     []
   );
 
+  const categories = useMemo(() => {
+    const set = new Set(faqs.map((f) => f.category));
+    return ["All", ...Array.from(set)];
+  }, [faqs]);
+
+  const [activeCategory, setActiveCategory] = useState("All");
   const [openIndex, setOpenIndex] = useState(0);
+
+  const filteredFaqs = useMemo(() => {
+    if (activeCategory === "All") return faqs;
+    return faqs.filter((f) => f.category === activeCategory);
+  }, [faqs, activeCategory]);
+
+  useEffect(() => {
+    setOpenIndex(0);
+  }, [activeCategory]);
+
+  const title = activeCategory === "All" ? "All Questions" : `${activeCategory} Questions`;
 
   return (
     <main className="apex-faq">
@@ -275,25 +263,22 @@ export default function FAQ() {
         <div className="fq-shell">
           <div className="fq-heroCard">
             <div className="fq-heroCopy">
-              <div className="fq-eyebrow">
-                <span className="fq-dot" aria-hidden="true" />
-                FAQ
-              </div>
-              <h1 className="fq-h1">Answers, clarity, and what to expect</h1>
+              <div className="fq-eyebrow" />
+              <h1 className="fq-h1">Frequently Asked Questions</h1>
               <p className="fq-lead">
-                Practical details about how Apex Tide works with transportation,
-                logistics, and supply-chain organizations.
+                Explore answers to frequently asked questions about Apex Tide and learn how we help you get started,
+                stay confident, and move forward with clarity.
               </p>
             </div>
 
             <div className="fq-heroAside" aria-hidden="true">
               <div className="fq-miniStat">
-                <div className="fq-miniNum">13</div>
+                <div className="fq-miniNum">{faqs.length}</div>
                 <div className="fq-miniLabel">Questions</div>
               </div>
               <div className="fq-miniStat">
-                <div className="fq-miniNum">01</div>
-                <div className="fq-miniLabel">Page</div>
+                <div className="fq-miniNum">{faqs.length}</div>
+                <div className="fq-miniLabel">Questions Answered</div>
               </div>
             </div>
 
@@ -306,47 +291,67 @@ export default function FAQ() {
         </div>
       </section>
 
-
+      {/* TWO-COLUMN FAQ */}
       <section className="fq-section" aria-label="Frequently asked questions">
         <div className="fq-shell">
-          <div className="fq-wrap">
-            {faqs.map((item, idx) => {
-              const open = idx === openIndex;
-              const btnId = `faq-btn-${idx}`;
-              const panelId = `faq-panel-${idx}`;
-
-              return (
-                <article key={idx} className={`fq-item ${open ? "is-open" : ""}`}>
+          <div className="fq-layout">
+            {/* Sidebar */}
+            <aside className="fq-side" aria-label="FAQ categories">
+              <nav className="fq-nav">
+                {categories.map((cat) => (
                   <button
-                    id={btnId}
-                    className="fq-q"
+                    key={cat}
                     type="button"
-                    aria-expanded={open}
-                    aria-controls={panelId}
-                    onClick={() => setOpenIndex(open ? -1 : idx)}
+                    className={`fq-navItem ${cat === activeCategory ? "is-active" : ""}`}
+                    onClick={() => setActiveCategory(cat)}
                   >
-                    <span className="fq-qText">{item.q}</span>
-                    <span className="fq-icon" aria-hidden="true">
-                      <span className="fq-plus" />
-                    </span>
+                    {cat}
                   </button>
+                ))}
+              </nav>
+            </aside>
 
-                  <div
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={btnId}
-                    className="fq-a"
-                  >
-                    <div className="fq-aInner">{item.a}</div>
-                  </div>
-                </article>
-              );
-            })}
+            {/* Content */}
+            <div className="fq-main">
+              <div className="fq-mainHead">
+                <div className="fq-mainTitle">{title}</div>
+              </div>
+
+              <div className="fq-list">
+                {filteredFaqs.map((item, idx) => {
+                  const open = idx === openIndex;
+                  const btnId = `faq-btn-${activeCategory}-${idx}`;
+                  const panelId = `faq-panel-${activeCategory}-${idx}`;
+
+                  return (
+                    <article key={`${activeCategory}-${idx}`} className={`fq-row ${open ? "is-open" : ""}`}>
+                      <button
+                        id={btnId}
+                        className="fq-rowBtn"
+                        type="button"
+                        aria-expanded={open}
+                        aria-controls={panelId}
+                        onClick={() => setOpenIndex(open ? -1 : idx)}
+                      >
+                        <span className="fq-rowQ">{item.q}</span>
+                        <span className="fq-rowIcon" aria-hidden="true">
+                          <span className="fq-plus" />
+                        </span>
+                      </button>
+
+                      <div id={panelId} role="region" aria-labelledby={btnId} className="fq-rowA">
+                        <div className="fq-rowAInner">{item.a}</div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      
+      {/* CTA */}
       <section className="fq-strip" aria-label="Quick note">
         <div className="fq-shell">
           <div className="fq-stripInner">

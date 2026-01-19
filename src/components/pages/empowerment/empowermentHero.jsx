@@ -2,7 +2,9 @@
 import React from "react";
 import "../../../assets/styles/pages/hero.css";
 
-import heroBg from "../../../assets/images/hero/ocean-and-mountain.png";
+
+
+import heroBg from "../../../assets/images/hero/influencial.png";
 
 export default function EmpowermentHero() {
   return (

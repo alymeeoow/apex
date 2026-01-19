@@ -1,5 +1,7 @@
-/* empowerment.css */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap");
+
+
+
 
 :root {
   --primary-dark: #07152b;
@@ -19,7 +21,6 @@
 
   --shell-max: 1480px;
   --shell-pad: clamp(22px, 3.5vw, 72px);
-
   --gap: clamp(22px, 3vw, 56px);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -31,7 +32,6 @@
   background: #fff;
 }
 
-/* ---------------- SECTION WRAPPER ---------------- */
 .empower-section {
   padding: 120px 0;
   background: #fff;
@@ -48,36 +48,36 @@
 
 .empower-shell {
   max-width: var(--shell-max);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--shell-pad);
 }
 
 .empower-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--gap);
+  grid-template-columns: repeat(12, minmax(0, 1fr));   gap: var(--gap);
   align-items: start;
+  width: 100%;
 }
 
-/* columns */
 .empower-left {
   grid-column: 1 / span 5;
   position: sticky;
   top: 110px;
+  min-width: 0;
 }
 
 .empower-right {
   grid-column: 6 / -1;
+  min-width: 0;
 }
 
-.empower-rail {
-  width: 100%;
-}
+.empower-rail { width: 100%; min-width: 0; }
 
-/* left stack */
 .empower-leftStack {
   display: grid;
   gap: 18px;
+  min-width: 0;
 }
 
 .empower-mediaCard,
@@ -89,6 +89,7 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   overflow: hidden;
+  min-width: 0;
 }
 
 .empower-image {
@@ -115,19 +116,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transform: scale(1.06);
   transition: transform 900ms var(--ease);
 }
 
-.empower-mediaCard:hover .empower-image img {
-  transform: scale(1.02);
-}
+.empower-mediaCard:hover .empower-image img { transform: scale(1.02); }
 
-/* info card */
-.empower-infoCard {
-  padding: 22px 22px 24px;
-}
+.empower-infoCard { padding: 22px 22px 24px; }
 
 .empower-infoTitle {
   font-size: 22px;
@@ -154,21 +149,17 @@
   color: var(--primary-dark);
 }
 
-/* mini stats */
-.empower-miniStats {
-  display: grid;
-  gap: 10px;
-}
+.empower-miniStats { display: grid; gap: 10px; }
 
 .empower-miniStat {
   display: grid;
-  grid-template-columns: 54px 1fr;
-  gap: 12px;
+  grid-template-columns: 54px minmax(0, 1fr);   gap: 12px;
   align-items: center;
   padding: 12px 12px;
   border: 1px solid rgba(15, 23, 42, 0.10);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.78);
+  min-width: 0;
 }
 
 .empower-miniNum {
@@ -182,9 +173,9 @@
   font-size: 13px;
   color: var(--muted);
   line-height: 1.4;
+  min-width: 0;
 }
 
-/* right rail typography */
 .empower-eyebrow {
   font-size: 12px;
   letter-spacing: 0.24em;
@@ -231,9 +222,8 @@
   margin-bottom: 24px;
   letter-spacing: -0.01em;
   color: rgba(71, 85, 105, 0.95);
-}
+  overflow-wrap: anywhere; }
 
-/* cards */
 .empower-card {
   width: 100%;
   background: rgba(255, 255, 255, 0.86);
@@ -244,6 +234,7 @@
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  min-width: 0;
 }
 
 .empower-cardTitle {
@@ -259,7 +250,8 @@
   border-color: rgba(15, 23, 42, 0.10);
 }
 
-.empower-card--accent {
+.empower-card--accent,
+.empower-card--accent1 {
   background: linear-gradient(
     135deg,
     rgba(30, 58, 95, 0.12),
@@ -268,7 +260,13 @@
   border-color: rgba(30, 58, 95, 0.26);
 }
 
-/* list */
+.empower-card--accent1 {
+  
+  margin-top: 130px; 
+  font-size: 18px;
+
+}
+
 .empower-list {
   list-style: none;
   padding: 0;
@@ -283,7 +281,7 @@
   line-height: 1.9;
   font-size: 18px;
   color: rgba(71, 85, 105, 0.95);
-}
+  overflow-wrap: anywhere; }
 
 .empower-list li::before {
   content: "";
@@ -298,7 +296,6 @@
   transform: translateY(-50%);
 }
 
-/* quote */
 .empower-quote {
   margin: 34px 0 0;
   padding: 34px 36px 34px 54px;
@@ -309,6 +306,7 @@
   color: rgba(71, 85, 105, 0.95);
   border-left: 6px solid rgba(30, 58, 95, 0.85);
   position: relative;
+  overflow-wrap: anywhere;
 }
 
 .empower-quote::before {
@@ -322,7 +320,6 @@
   font-weight: 900;
 }
 
-/* affirm */
 .empower-affirm {
   margin: 18px 0 22px;
   padding: 18px 20px;
@@ -332,6 +329,7 @@
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
   display: grid;
   gap: 8px;
+  margin-top: 110px;
 }
 
 .empower-affirm p {
@@ -339,9 +337,9 @@
   font-weight: 900;
   color: var(--primary-dark);
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
 }
 
-/* CTA */
 .empower-cta {
   display: inline-flex;
   align-items: center;
@@ -354,6 +352,7 @@
   color: var(--primary-dark);
   text-decoration: none;
   transition: transform 200ms var(--ease), background 200ms var(--ease);
+  max-width: 100%;
 }
 
 .empower-cta:hover {
@@ -361,7 +360,7 @@
   background: rgba(30, 58, 95, 0.14);
 }
 
-/* responsive */
+
 @media (max-width: 1100px) {
   .empower-left {
     position: relative;
@@ -374,35 +373,75 @@
   }
 }
 
+@media (max-width: 768px) {
+  .empower-section { padding: 90px 0; }
+
+  .empower-shell {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .empower-grid { gap: 26px; }
+
+  .empower-title { text-align: center; }
+  .empower-title::after { left: 50%; transform: translateX(-50%); }
+  .empower-eyebrow { text-align: center; }
+
+  .empower-lead { font-size: 17px; text-align: center; line-height: 1.75; }
+  .empower-rail p { font-size: 16px; line-height: 1.8; }
+
+  .empower-infoCard { text-align: center; }
+  .empower-chipGrid { justify-content: center; }
+
+  .empower-card { padding: 24px; margin: 34px 0; }
+
+  .empower-affirm { margin-top: 28px; } }
+
 @media (max-width: 640px) {
-  .empower-section {
-    padding: 88px 0;
+  .empower-shell {
+    padding-left: 4.5vw;
+    padding-right: 4.5vw;
   }
 
-  .empower-title {
-    font-size: 28px;
-  }
+  .empower-title { font-size: 28px; }
 
-  .empower-lead {
-    font-size: 17px;
-  }
-
-  .empower-rail p {
-    font-size: 16.5px;
-  }
-
-  .empower-card {
-    padding: 26px;
-    margin: 38px 0;
-  }
+  .empower-card { padding: 22px; }
 
   .empower-quote {
-    padding: 26px 22px 26px 44px;
+    padding: 24px 18px 24px 40px;
   }
 
   .empower-quote::before {
     left: 12px;
     top: 4px;
-    font-size: 58px;
+    font-size: 56px;
   }
+
+  .empower-list li { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .empower-shell {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+
+  .empower-section { padding: 78px 0; }
+
+  .empower-image { height: 240px; }
+
+  .empower-card { padding: 18px; margin: 26px 0; }
+
+  .empower-quote { padding: 20px 16px 20px 36px; }
+  .empower-quote::before { font-size: 48px; }
+}
+
+@media (max-width: 360px) {
+  .empower-shell {
+    padding-left: 3.5vw;
+    padding-right: 3.5vw;
+  }
+
+  .empower-title { font-size: 24px; }
+  .empower-image { height: 210px; }
 }
