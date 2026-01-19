@@ -27,7 +27,7 @@ export default function AboutHero() {
 
       <div className="apex-hero-inner">
         <h1 className="apex-hero-title">
-          ABOUT  ME
+          ABOUT  EILEEN 
         </h1>
         <p className="apex-hero-subtitle">
   A reflection on the journey, the work and the values that guide me

@@ -15,13 +15,16 @@
   --r2: 30px;
 
   --shell-max: 1180px;
-  --shell-pad: clamp(18px, 3.4vw, 60px);
-  --gap: clamp(16px, 2.3vw, 26px);
+  --shell-pad: clamp(16px, 3.4vw, 60px);
+  --gap: clamp(14px, 2.3vw, 26px);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --svc-fill-rows: 8;
   --svc-row-h: 52px;
+
+  /* helps with fixed headers / nav overlays */
+  --nav-safe: clamp(76px, 10vh, 120px);
 }
 
 .apex-services {
@@ -40,7 +43,99 @@
   padding: 0 var(--shell-pad);
 }
 
+/* =========================================================
+   FULL-WIDTH HERO (RESPONSIVE + NO "FAKE SPACE" HACKS)
+========================================================= */
+.svc-heroFull {
+  position: relative;
+  width: 100%;
+  min-height: clamp(100vh, 62vh, 80vh);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-top: env(safe-area-inset-top);
+}
 
+.svc-heroBgFull {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  z-index: 1;
+  filter: saturate(105%) contrast(103%);
+}
+
+.svc-heroOverlayFull {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 20, 0.55) 0%,
+    rgba(8, 12, 20, 0.68) 45%,
+    rgba(8, 12, 20, 0.78) 100%
+  );
+}
+
+.svc-heroShellFull {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: var(--nav-safe);
+  padding-bottom: clamp(46px, 8vh, 86px);
+}
+
+.svc-heroContentFull {
+  margin-bottom: 22rem;
+  max-width: 720px;
+  color: #fff;
+  padding: clamp(10px, 2.2vw, 18px) 0;
+}
+
+.svc-heroEyebrowFull {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.svc-heroTitleFull {
+  margin: 0;
+  font-size: clamp(32px, 7vw, 62px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  padding-bottom: 14px;
+  position: relative;
+}
+
+.svc-heroTitleFull::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 92px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.45));
+  opacity: 0.9;
+}
+
+.svc-heroSubFull {
+  margin: 14px 0 0;
+  font-size: clamp(14.5px, 2.8vw, 16.5px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 64ch;
+}
+
+/* =========================================================
+   EXISTING "BOX HERO" (your old hero)
+   keep it if you're using it elsewhere
+========================================================= */
 .svc-hero { padding: 92px 0 44px; }
 
 .svc-heroInner {
@@ -56,7 +151,6 @@
   gap: var(--gap);
   align-items: start;
 }
-
 
 .svc-heroDecor { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
@@ -116,7 +210,7 @@
 
 .svc-h1 {
   margin: 10px 0 0;
-  font-size: clamp(40px, 3.4vw, 60px);
+  font-size: clamp(32px, 5vw, 60px);
   letter-spacing: -0.06em;
   line-height: 1.02;
   font-weight: 700;
@@ -130,7 +224,6 @@
   line-height: 1.85;
   color: rgba(71, 85, 105, 0.94);
 }
-
 
 .svc-heroBadges {
   margin-top: 18px;
@@ -158,7 +251,6 @@
 
 .svc-miniIco { width: 22px; height: 22px; color: rgba(30, 58, 95, 0.86); }
 .svc-badge .svc-miniIco { width: 18px; height: 18px; }
-
 
 .svc-heroAside {
   display: grid;
@@ -195,10 +287,11 @@
   font-size: 14px;
 }
 
-
+/* =========================================================
+   SECTIONS
+========================================================= */
 .svc-section { padding: 54px 0 10px; }
 .svc-section--tight { padding: 44px 0 92px; }
-
 
 .svc-split {
   display: grid;
@@ -206,7 +299,6 @@
   gap: var(--gap);
   align-items: center;
 }
-
 
 .svc-photoWrap {
   position: relative;
@@ -243,7 +335,6 @@
 }
 
 .svc-photoTag .svc-miniIco { width: 18px; height: 18px; color: rgba(255,255,255,0.92); }
-
 
 .svc-copy {
   border-radius: var(--r2);
@@ -282,7 +373,7 @@
   position: relative;
   z-index: 1;
   margin: 0 0 10px;
-  font-size: clamp(22px, 2.2vw, 36px);
+  font-size: clamp(20px, 4.8vw, 36px);
   letter-spacing: -0.045em;
   line-height: 1.08;
   font-weight: 700;
@@ -302,7 +393,6 @@
   font-size: 15.5px;
 }
 .svc-p--center { margin: 0 auto; max-width: 70ch; text-align: center; }
-
 
 .svc-chipList { display: flex; flex-wrap: wrap; gap: 10px; }
 .svc-chipRow { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -326,6 +416,21 @@
   box-shadow: none;
 }
 
+.svc-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.svc-chipIco{
+  width: 25px;
+  height: 25px;
+  color: rgba(30, 58, 95, 0.88);
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   COURSE BAND
+========================================================= */
 .svc-courseBand {
   padding: 74px 0;
   margin-top: 28px;
@@ -374,9 +479,10 @@
   font-size: 14.5px;
 }
 
-
+/* =========================================================
+   LANES
+========================================================= */
 .svc-center { text-align: center; margin: 6px 0 26px; }
-
 
 .svc-lanes {
   display: grid;
@@ -384,7 +490,6 @@
   gap: var(--gap);
   align-items: stretch;
 }
-
 
 .svc-laneCard {
   border-radius: calc(var(--r2) + 4px);
@@ -394,11 +499,10 @@
   overflow: hidden;
   height: 100%;
   display: grid;
-  grid-template-rows: 112px 92px 1fr; 
+  grid-template-rows: 112px 92px 1fr;
   position: relative;
 }
 
-/* subtle decor */
 .svc-laneCard::before {
   content: "";
   position: absolute;
@@ -461,22 +565,6 @@
   padding-top: 2px;
 }
 
-.svc-laneMetaNum {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: rgba(7, 21, 43, 0.92);
-  line-height: 1;
-}
-
-.svc-laneMetaLabel {
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(71, 85, 105, 0.80);
-}
-
 .svc-laneVisual {
   position: relative;
   z-index: 1;
@@ -502,7 +590,6 @@
   opacity: 0.18;
 }
 
-
 .svc-laneGrid {
   position: relative;
   z-index: 1;
@@ -516,7 +603,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-
 .svc-lineItem {
   display: grid;
   grid-template-columns: 18px 1fr;
@@ -529,7 +615,6 @@
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
-
 
 .svc-bullet {
   width: 12px;
@@ -556,59 +641,76 @@
   line-height: 1.2;
 }
 
+/* =========================================================
+   RESPONSIVE (REAL BREAKPOINTS)
+========================================================= */
 
-.svc-laneGrid:not(.is-2col) {
-  grid-auto-rows: var(--svc-row-h);
-}
-
-
-.svc-laneGrid:not(.is-2col)::after {
-  content: "";
-  display: block;
-  height: calc((var(--svc-fill-rows) - var(--svc-count, 6)) * var(--svc-row-h));
-}
-
-
-.svc-lanes > .svc-laneCard:nth-child(2) { --svc-count: 6; }
-.svc-lanes > .svc-laneCard:nth-child(3) { --svc-count: 5; }
-.svc-chip{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.svc-chipIco{
-  width: 25px;
-  height: 25px;
-  color: rgba(30, 58, 95, 0.88);
-  flex: 0 0 auto;
-}
-
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 1100px) {
-  .svc-heroInner { grid-template-columns: 1fr; }
-  .svc-heroAside {
-    justify-self: start;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding-top: 14px;
-    align-content: start;
-  }
-
+/* Tablet */
+@media (max-width: 1024px) {
   .svc-split { grid-template-columns: 1fr; }
   .svc-photo { height: 320px; }
 
   .svc-courseTop { grid-template-columns: 1fr; }
+  .svc-courseCards { grid-template-columns: 1fr; }
   .svc-courseCard { grid-column: 1 / -1; }
 
   .svc-lanes { grid-template-columns: 1fr; }
-  .svc-laneCard { grid-template-rows: auto 92px 1fr; } /* let header auto on mobile */
+  .svc-laneCard { grid-template-rows: auto 92px 1fr; }
   .svc-laneGrid.is-2col { grid-template-columns: 1fr; }
-  .svc-laneGrid:not(.is-2col)::after { display: none; }
 }
 
+/* Phone */
 @media (max-width: 640px) {
-  .svc-hero { padding: 82px 0 40px; }
-  .svc-heroAside { grid-template-columns: 1fr; }
-  .svc-courseBand { padding: 60px 0; }
-  .svc-section--tight { padding: 40px 0 74px; }
+  .svc-heroFull {
+    min-height: 56vh;
+    align-items: flex-end;
+  }
+
+  .svc-heroShellFull {
+    padding-top: clamp(84px, 12vh, 110px);
+    padding-bottom: 64px;
+  }
+
+  .svc-heroTitleFull::after { width: 76px; }
+
+  .svc-hero { padding: 70px 0 34px; }
+
+  .svc-heroInner {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .svc-heroAside {
+    grid-template-columns: 1fr;
+    padding-top: 10px;
+    justify-self: start;
+  }
+
+  .svc-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .svc-section { padding: 44px 0 6px; }
+  .svc-section--tight { padding: 36px 0 74px; }
+
+  .svc-photo { height: 260px; }
+
+  .svc-chip { font-size: 12.8px; padding: 9px 10px; }
+  .svc-chipIco { width: 20px; height: 20px; }
+
+  .svc-courseBand { padding: 56px 0; }
+  .svc-courseLead { font-size: 14.8px; }
+
+  .svc-laneHead { padding: 16px 16px 12px; }
+  .svc-laneGrid { padding: 14px 16px 16px; gap: 10px; }
+  .svc-lineItem { min-height: 48px; padding: 10px; }
+  .svc-lineText { font-size: 13px; }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .svc-heroTitleFull { font-size: 34px; }
+  .svc-photo { height: 235px; }
 }

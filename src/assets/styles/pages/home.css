@@ -1,34 +1,4 @@
 
-:root {
-  --primary-dark: #0a1628;
-  --primary: #1e3a5f;
-
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-
-  --border: rgba(17, 24, 39, 0.12);
-
- 
-  --bg-subtle: #eef3f9;
-
-  --shadow: 0 18px 48px rgba(17, 24, 39, 0.10);
-  --radius: 16px;
-
-  --shell-max: 1400px;
-  --shell-pad: 64px;
-
-  --side-col: clamp(420px, 38vw, 560px);
-  --gap: clamp(26px, 4vw, 80px);
-  --img-h: clamp(320px, 34vw, 520px);
-
-  --text-max: 920px;
-
-
-  --reveal-distance: 28px;
-  --reveal-dur: 720ms;
-  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --reveal-stagger: 120ms;
-}
 
 
 .apex-home {
@@ -189,12 +159,27 @@
 }
 
 .apex-title {
+  position: relative;   
+  display: inline-block;      
+  padding-bottom: 14px; 
   font-size: clamp(30px, 3vw, 44px);
   font-weight: 800;
   color: var(--primary-dark);
   letter-spacing: -0.04em;
   line-height: 1.15;
   margin-bottom: 18px;
+}
+
+.apex-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 76px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), rgba(74, 132, 197, 0.9));
+  box-shadow: 0 10px 24px rgba(74, 132, 197, 0.22);
 }
 
 .apex-subtitle {
