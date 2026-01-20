@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* NAVIGATION */}
+ 
           <div>
             <div className="apex-footer-colTitle">NAVIGATION</div>
             <div className="apex-footer-links">
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* EMPOWERMENT */}
+   
           <div>
             <div className="apex-footer-colTitle">EMPOWERMENT</div>
             <div className="apex-footer-links">
@@ -78,7 +78,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* SUPPORT */}
+
           <div>
             <div className="apex-footer-colTitle">SUPPORT</div>
             <div className="apex-footer-links">
