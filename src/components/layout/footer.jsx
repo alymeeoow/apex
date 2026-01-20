@@ -21,7 +21,7 @@ export default function Footer() {
 
       <div className="apex-footer-inner">
         <div className="apex-footer-top">
-          {/* BRAND */}
+   
           <div className="apex-footer-brandBlock">
             <NavLink to="/" className="apex-footer-brand" aria-label="APEX Home">
               <span className="apex-footer-brandRow">
