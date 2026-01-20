@@ -100,7 +100,7 @@
   margin-right: 50px;
   width: clamp(84px, 7vw, 120px);
   flex-shrink: 0;
-  filter: drop-shadow(0 10px 24px rgba(74, 132, 197, 0.35));
+ 
 }
 
 .apex-footer-word {

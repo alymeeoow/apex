@@ -1,6 +1,6 @@
 // Section4.jsx
 import React from "react";
-import KristyE from "../../../assets/images/home/kristy-and-eileen.jpg";
+import KristyE from "../../../assets/images/home/eileen-community.jpg";
 
 export default function Section4() {
   return (

@@ -1,6 +1,8 @@
 import React from "react";
 import  AboutSection3Image from "../../../assets/images/about/about-section-3.png";
 
+import EileenInWhite from "../../../assets/images/home/eileen-choose-white.jpg"
+
 export default function AboutSection3() {
   return (
     <section id="about-section-3" className="about-section">
@@ -12,7 +14,7 @@ export default function AboutSection3() {
               <div className="about-mediaCard">
                 <div className="about-image">
                   <img
-                    src={AboutSection3Image}
+                    src={EileenInWhite}
                     alt="Industry speaking and thought leadership"
                   />
                 </div>
