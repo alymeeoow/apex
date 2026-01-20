@@ -4,9 +4,9 @@ import "../../../assets/styles/pages/empowerment.css";
 import { MdArrowOutward } from "react-icons/md";
 import EmpowermentHero from "./empowermentHero";
 
-// swap these images anytime
-import EmpowermentImg1 from "../../../assets/images/about/about-section-2.png";
-import EmpowermentImg2 from "../../../assets/images/about/about-section-3.png";
+
+import EmpowermentImg1 from "../../../assets/images/home/empowerment.jpg";
+import EmpowermentImg2 from "../../../assets/images/home/eileen-choose.jpg";
 
 export default function Empowerment() {
   return (

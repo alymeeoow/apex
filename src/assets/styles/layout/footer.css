@@ -88,15 +88,16 @@
   text-decoration: none;
 }
 
-/* The pair container */
+
 .apex-footer-brandRow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* desktop gap */
+  gap: 8px; 
 }
 
 .apex-footer-logo {
+  margin-right: 50px;
   width: clamp(84px, 7vw, 120px);
   flex-shrink: 0;
   filter: drop-shadow(0 10px 24px rgba(74, 132, 197, 0.35));
@@ -106,11 +107,11 @@
   width: clamp(220px, 22vw, 420px);
   max-width: calc(100vw - 140px);
   margin: 0;
-  margin-left: 40px; /* desktop spacing */
+  margin-left: 40px;
   filter: brightness(0) invert(1);
 }
 
-/* desktop-only special positioning */
+
 @media (min-width: 981px) {
   .apex-footer-word {
     margin-left: -135px;
