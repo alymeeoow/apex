@@ -69,12 +69,7 @@ export default function Footer() {
               <NavLink to="/empowerment" className={footerLinkClass}>
                 Empowerment
               </NavLink>
-              <NavLink to="/programs" className={footerLinkClass}>
-                Programs
-              </NavLink>
-              <NavLink to="/resources" className={footerLinkClass}>
-                Resources
-              </NavLink>
+            
             </div>
           </div>
 
@@ -82,12 +77,7 @@ export default function Footer() {
           <div>
             <div className="apex-footer-colTitle">SUPPORT</div>
             <div className="apex-footer-links">
-              <NavLink to="/help" className={footerLinkClass}>
-                Help Center
-              </NavLink>
-              <NavLink to="/quote" className={footerLinkClass}>
-                Request a Quote
-              </NavLink>
+            
               <NavLink to="/faq" className={footerLinkClass}>
                 Common Questions
               </NavLink>

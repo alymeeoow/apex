@@ -1,11 +1,10 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 .apex-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lexend", system-ui, sans-serif;
   background: linear-gradient(180deg, #eef7ff 0%, #dbeafb 100%);
   border-bottom: 1px solid rgba(12, 42, 84, 0.10);
   backdrop-filter: blur(12px);
@@ -53,18 +52,22 @@
   opacity: 0.9;
 }
 
+
 .apex-header-ocean {
   position: absolute;
   left: -10%;
   right: -10%;
   bottom: -30px;
   height: 90px;
+
+  /* your base ocean fill */
   background: linear-gradient(
     180deg,
     rgba(74, 132, 197, 0.20) 0%,
     rgba(47, 95, 158, 0.22) 50%,
     rgba(7, 33, 69, 0.16) 100%
   );
+
   clip-path: polygon(
     0% 45%,
     8% 55%,
@@ -83,7 +86,64 @@
     100% 100%,
     0% 100%
   );
-  filter: blur(0.2px);
+
+  /* IMPORTANT for pseudo-element animation */
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+
+  /* optional: keep this tiny or remove it */
+  filter: blur(0.15px);
+
+  /* gentle up/down swell */
+  animation: apex-ocean-swell 4s ease-in-out infinite;
+}
+
+/* moving wave shimmer layer */
+.apex-header-ocean::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 220%;
+  height: 100%;
+
+  /* visible wave streaks */
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.22) 0px,
+    rgba(255, 255, 255, 0.10) 18px,
+    rgba(255, 255, 255, 0.00) 44px,
+    rgba(255, 255, 255, 0.14) 70px,
+    rgba(255, 255, 255, 0.00) 110px
+  );
+
+  opacity: 0.40;
+  mix-blend-mode: overlay;
+
+  /* THIS is the motion (more reliable than background-position) */
+  animation: apex-ocean-drift 6s linear infinite;
+  will-change: transform;
+  transform: translateX(0);
+}
+
+@keyframes apex-ocean-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(25%); }
+}
+
+@keyframes apex-ocean-swell {
+  0%   { transform: translateY(0) translateZ(0); }
+  50%  { transform: translateY(2px) translateZ(0); }
+  100% { transform: translateY(0) translateZ(0); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .apex-header-ocean,
+  .apex-header-ocean::before {
+    animation: none !important;
+  }
 }
 
 .apex-header-glow {
@@ -215,12 +275,11 @@
   gap: 12px;
 }
 
-
 .apex-header-burger {
   display: none;
   width: 44px;
   height: 44px;
-background-color: transparent;
+  background-color: transparent;
   border: none;
 
   cursor: pointer;
@@ -265,7 +324,6 @@ background-color: transparent;
   transform: rotate(-45deg);
 }
 
-
 .apex-mobile {
   font-family: "Inter", system-ui, sans-serif;
   position: fixed;
@@ -281,7 +339,6 @@ background-color: transparent;
   opacity: 1;
 }
 
-
 .apex-mobile-backdrop {
   position: absolute;
   inset: 0;
@@ -292,7 +349,6 @@ background-color: transparent;
   -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
 }
-
 
 .apex-mobile-panel {
   position: absolute;
@@ -380,13 +436,11 @@ background-color: transparent;
   margin: 6px 4px;
 }
 
-
 @media (min-width: 861px) {
   .apex-mobile {
     display: none !important;
   }
 }
-
 
 @media (max-width: 860px) {
   .apex-header-navWrap {

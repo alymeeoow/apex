@@ -6,7 +6,7 @@ import AboutheroBg from "../../../assets/images/home/eileen-2.png";
 export default function AboutHero() {
   return (
     <section className="apex-hero" id="home">
-      s
+      
       <div
         className="apex-hero-bg-2"
         style={{

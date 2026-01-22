@@ -106,10 +106,16 @@
 .apex-footer-word {
   width: clamp(220px, 22vw, 420px);
   max-width: calc(100vw - 140px);
+  height: auto;
+
   margin: 0;
   margin-left: 40px;
+
   filter: brightness(0) invert(1);
+
+ 
 }
+
 
 
 @media (min-width: 981px) {
