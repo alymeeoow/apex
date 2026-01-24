@@ -1,6 +1,6 @@
-
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import "../../assets/styles/layout/footer.css";
 
 import logo from "../../assets/images/logo/apex-transparent.png";
@@ -21,7 +21,7 @@ export default function Footer() {
 
       <div className="apex-footer-inner">
         <div className="apex-footer-top">
-   
+          {/* BRAND */}
           <div className="apex-footer-brandBlock">
             <NavLink to="/" className="apex-footer-brand" aria-label="APEX Home">
               <span className="apex-footer-brandRow">
@@ -40,9 +40,9 @@ export default function Footer() {
             </p>
           </div>
 
- 
+          {/* NAVIGATION */}
           <div>
-            <div className="apex-footer-colTitle">NAVIGATION</div>
+            <div className="apex-footer-colTitle">QUICK LINKS</div>
             <div className="apex-footer-links">
               <NavLink to="/" end className={footerLinkClass}>
                 Home
@@ -57,27 +57,44 @@ export default function Footer() {
                 Contact
               </NavLink>
               <NavLink to="/faq" className={footerLinkClass}>
-                FAQ
+                Faq
               </NavLink>
-            </div>
-          </div>
-
-   
-          <div>
-            <div className="apex-footer-colTitle">EMPOWERMENT</div>
-            <div className="apex-footer-links">
               <NavLink to="/empowerment" className={footerLinkClass}>
                 Empowerment
               </NavLink>
-            
             </div>
           </div>
+{/* CONTACTS */}
+<div>
+  <div className="apex-footer-colTitle">CONTACTS</div>
+  <div className="apex-footer-links">
+    <a
+      href="https://www.linkedin.com/in/eileen-dabrowski-a090a7141"
+      className="apex-footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaLinkedin style={{ marginRight: "8px" }} />
+      LinkedIn
+    </a>
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=eileendabrowski@gmail.com"
+      className="apex-footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaEnvelope style={{ marginRight: "8px" }} />
+      eileendabrowski@gmail.com
+    </a>
+  </div>
+</div>
 
 
+          {/* SUPPORT */}
           <div>
             <div className="apex-footer-colTitle">SUPPORT</div>
             <div className="apex-footer-links">
-            
               <NavLink to="/faq" className={footerLinkClass}>
                 Common Questions
               </NavLink>
@@ -88,7 +105,9 @@ export default function Footer() {
         <div className="apex-footer-divider" />
 
         <div className="apex-footer-bottom">
-          <div className="apex-footer-copy">© {year} APEX. All rights reserved.</div>
+          <div className="apex-footer-copy">
+            © {year} APEX. All rights reserved.
+          </div>
 
           <div className="apex-footer-miniLinks">
             <NavLink to="/privacy" className="apex-footer-miniLink">

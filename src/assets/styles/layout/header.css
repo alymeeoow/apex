@@ -52,22 +52,18 @@
   opacity: 0.9;
 }
 
-
 .apex-header-ocean {
   position: absolute;
   left: -10%;
   right: -10%;
   bottom: -30px;
   height: 90px;
-
-  /* your base ocean fill */
   background: linear-gradient(
     180deg,
     rgba(74, 132, 197, 0.20) 0%,
     rgba(47, 95, 158, 0.22) 50%,
     rgba(7, 33, 69, 0.16) 100%
   );
-
   clip-path: polygon(
     0% 45%,
     8% 55%,
@@ -86,20 +82,13 @@
     100% 100%,
     0% 100%
   );
-
-  /* IMPORTANT for pseudo-element animation */
   overflow: hidden;
   transform: translateZ(0);
   will-change: transform;
-
-  /* optional: keep this tiny or remove it */
   filter: blur(0.15px);
-
-  /* gentle up/down swell */
   animation: apex-ocean-swell 4s ease-in-out infinite;
 }
 
-/* moving wave shimmer layer */
 .apex-header-ocean::before {
   content: "";
   position: absolute;
@@ -107,8 +96,6 @@
   left: -60%;
   width: 220%;
   height: 100%;
-
-  /* visible wave streaks */
   background: repeating-linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.22) 0px,
@@ -117,11 +104,8 @@
     rgba(255, 255, 255, 0.14) 70px,
     rgba(255, 255, 255, 0.00) 110px
   );
-
   opacity: 0.40;
   mix-blend-mode: overlay;
-
-  /* THIS is the motion (more reliable than background-position) */
   animation: apex-ocean-drift 6s linear infinite;
   will-change: transform;
   transform: translateX(0);
@@ -137,7 +121,6 @@
   50%  { transform: translateY(2px) translateZ(0); }
   100% { transform: translateY(0) translateZ(0); }
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .apex-header-ocean,
@@ -173,32 +156,48 @@
   max-width: 1300px;
   margin: 0 auto;
   gap: 18px;
+
+  /* critical for in-app browser layouts */
+  min-width: 0;
 }
 
+/* BRAND (fixed responsive + no negative margins) */
 .apex-header-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   text-decoration: none;
+
+  flex: 1 1 auto;
+  min-width: 0; /* allows children to shrink */
 }
 
 .apex-header-logo {
-  width: 100px;
   margin-top: 20px;
+  width: clamp(56px, 20vw, 90px);
   height: auto;
-  transform: translateY(6px);
-  flex-shrink: 0;
+  flex: 0 0 auto;
+
+ 
+  transform: none;
+
   filter:
     drop-shadow(0 10px 22px rgba(70, 130, 200, 0.35))
     drop-shadow(0 4px 8px rgba(12, 42, 84, 0.15));
 }
 
+
 .apex-header-word {
-  width: 500px;
+  width: clamp(140px, 50vw, 320px);
   height: auto;
-  margin-left: -160px;
-  transform: translateY(8px);
-  flex-shrink: 0;
+
+  margin-left: -60px;
+  margin-top: 10px;
+  transform: none;
+
+  flex: 0 1 auto;
+  min-width: 0;
+  object-fit: contain;
 }
 
 .apex-header-navWrap {
@@ -273,6 +272,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 0 0 auto;
 }
 
 .apex-header-burger {
@@ -281,7 +281,6 @@
   height: 44px;
   background-color: transparent;
   border: none;
-
   cursor: pointer;
   place-items: center;
   padding: 0;
@@ -324,6 +323,7 @@
   transform: rotate(-45deg);
 }
 
+/* MOBILE OVERLAY */
 .apex-mobile {
   font-family: "Inter", system-ui, sans-serif;
   position: fixed;
@@ -436,12 +436,14 @@
   margin: 6px 4px;
 }
 
+/* Desktop-only */
 @media (min-width: 861px) {
   .apex-mobile {
     display: none !important;
   }
 }
 
+/* Mobile */
 @media (max-width: 860px) {
   .apex-header-navWrap {
     display: none;
@@ -449,18 +451,6 @@
 
   .apex-header-burger {
     display: inline-grid;
-  }
-
-  .apex-header-logo {
-    width: 56px;
-    margin-top: 0;
-    transform: translateY(4px);
-  }
-
-  .apex-header-word {
-    width: 180px;
-    margin-left: -40px;
-    transform: translateY(6px);
   }
 
   .apex-header-mountains {
@@ -474,21 +464,19 @@
   }
 }
 
+
+@media (max-width: 360px) {
+  .apex-header-word {
+    display: none;
+  }
+}
+
+
 @media (max-width: 480px) {
   .apex-header-inner {
     padding: 8px 16px;
     min-height: 64px;
     height: 76px;
-  }
-
-  .apex-header-logo {
-    width: 60px;
-  }
-
-  .apex-header-word {
-    width: 250px;
-    margin-left: -90px;
-    margin-top: -15px;
   }
 
   .apex-header-glow {

@@ -143,7 +143,6 @@ export default function Header() {
         className={`apex-mobile ${isMenuOpen ? "is-open" : ""}`}
         aria-hidden={!isMenuOpen}
       >
-        {/* Clickable blur backdrop (tap anywhere outside to close) */}
         <button
           className="apex-mobile-backdrop"
           type="button"
@@ -152,7 +151,6 @@ export default function Header() {
           tabIndex={isMenuOpen ? 0 : -1}
         />
 
-        {/* Right-side panel (80% width) */}
         <aside
           id="apex-mobile-nav"
           ref={panelRef}
@@ -163,6 +161,14 @@ export default function Header() {
         >
           <div className="apex-mobile-panelTop">
             <span className="apex-mobile-title">MENU</span>
+            <button
+              className="apex-mobile-close"
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              ×
+            </button>
           </div>
 
           <nav className="apex-mobile-nav">
