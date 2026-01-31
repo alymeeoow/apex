@@ -146,11 +146,9 @@
 .apex-header-inner {
   position: relative;
   z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 12px 24px;
   height: 90px;
   max-width: 1300px;
@@ -203,7 +201,7 @@
 .apex-header-navWrap {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .apex-header-nav {
@@ -219,18 +217,19 @@
 }
 
 .apex-header-nav--right {
-  gap: 0;
+  gap: 28px;
 }
 
 .apex-header-link {
   position: relative;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: #012145;
   text-decoration: none;
   padding: 6px 2px;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .apex-header-link::after {
@@ -264,8 +263,9 @@
 }
 
 .apex-header-link--empower {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  color: #0a2459;
 }
 
 .apex-header-actions {
@@ -427,7 +427,8 @@
 }
 
 .apex-mobile-link--empower {
-  font-weight: 800;
+  font-weight: 700;
+  color: #0a2459;
 }
 
 .apex-mobile-sep {

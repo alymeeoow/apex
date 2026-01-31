@@ -1,118 +1,183 @@
-import React from "react";
-import  AboutSection2Image from "../../../assets/images/home/community-building.jpg";
+import React, { useEffect, useRef, useState } from "react";
+import AboutSection2Image from "../../../assets/images/home/community-building.jpg";
 
 export default function AboutSection2() {
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const statsRef = useRef([]);
+  const [animatedStats, setAnimatedStats] = useState([false, false, false]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          
+          // Animate stats with delay
+          statsRef.current.forEach((stat, index) => {
+            if (stat) {
+              setTimeout(() => {
+                setAnimatedStats(prev => {
+                  const newState = [...prev];
+                  newState[index] = true;
+                  return newState;
+                });
+              }, index * 300);
+            }
+          });
+          
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px"
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const statItems = [
+    { number: 7, label: "Industry conferences spoken at in 2025" },
+    { number: 3, label: "New mentees this year" },
+    { number: 10, label: "Months since Apex Tide launched" }
+  ];
+
+  const miniStats = [
+    { number: "10+", label: "Community initiatives led" },
+    { number: "100+", label: "Professionals impacted" },
+    { number: "1", label: "Virtual Assistant onboarded" }
+  ];
+
   return (
-    <section id="about-section-2" className="about-section about-alt">
+    <section 
+      id="about-section-2" 
+      className="about-section about-alt" 
+      ref={sectionRef}
+    >
       <div className="about-shell">
         <div className="about-grid">
           {/* LEFT */}
-          <aside className="about-left">
+          <aside className={`about-left ${inView ? 'animate-slide-left animated' : 'animate-init'}`}>
             <div className="about-leftStack">
-              <div className="about-mediaCard">
+              <div className={`about-mediaCard ${inView ? 'animate-scale-in animated' : 'animate-init'}`}>
                 <div className="about-image">
                   <img
                     src={AboutSection2Image}
                     alt="Community leadership"
+                    loading="lazy"
                   />
                 </div>
               </div>
 
-              <div className="about-infoCard">
-
+              <div className={`about-infoCard ${inView ? 'scroll-animate animated delay-200' : 'scroll-animate'}`}>
                 <div className="about-infoTitle">Community Leadership</div>
 
                 <div className="about-miniStats">
-
-                  <div className="about-miniStat">
-    <div className="about-miniNum">10+</div>
-    <div className="about-miniLabel">Community initiatives led</div>
-  </div>
-                  <div className="about-miniStat">
-    <div className="about-miniNum">100+</div>
-    <div className="about-miniLabel">Professionals impacted</div>
-  </div>
-
-
-                 
-
-                 <div className="about-miniStat">
-  <div className="about-miniNum">1</div>
-  <div className="about-miniLabel">Virtual Assistant onboarded</div>
-</div>
-
+                  {miniStats.map((stat, index) => (
+                    <div 
+                      key={index}
+                      className={`about-miniStat ${inView ? 'scroll-animate animated' : 'scroll-animate'}`}
+                      style={{ animationDelay: `${300 + index * 100}ms` }}
+                    >
+                      <div className="about-miniNum">{stat.number}</div>
+                      <div className="about-miniLabel">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-              <div className="about-card about-card--soft">
-                <h3 className="about-cardTitle">These engagements helped companies:</h3>
-                <ul className="about-list">
-                  <li>Improve cross-functional communication</li>
-                  <li>Clarify accountability and performance metrics</li>
-                  <li>Reduce burnout through workflow redesign</li>
-                  <li>Increase revenue efficiency without increasing headcount</li>
-                </ul>
-              </div>
 
-              <div className="about-card about-card--accent3">
+            <div className={`about-card about-card--soft ${inView ? 'scroll-animate animated delay-400' : 'scroll-animate'}`}>
+              <h3 className="about-cardTitle">These engagements helped companies:</h3>
+              <ul className="about-list">
+                {[
+                  "Improve cross-functional communication",
+                  "Clarify accountability and performance metrics",
+                  "Reduce burnout through workflow redesign",
+                  "Increase revenue efficiency without increasing headcount"
+                ].map((item, index) => (
+                  <li 
+                    key={index}
+                    className={inView ? `animated delay-${400 + index * 100}` : ''}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
+            <div className={`about-card about-card--accent3 ${inView ? 'scroll-animate animated delay-600' : 'scroll-animate'}`}>
               <p>
                 Eileen has also onboarded a full-time Virtual Assistant—an expansion she had not anticipated when launching earlier this year.
               </p>
-
-              </div>
+            </div>
           </aside>
 
           {/* RIGHT */}
           <div className="about-right">
             <div className="about-rail">
-
-              <h2 className="about-title">
+              <p className={`about-eyebrow ${inView ? 'animate-fade-up animated' : 'animate-init'}`}>Unity</p>
+              <h2 className={`about-title ${inView ? 'animate-fade-up animated delay-100' : 'animate-init'}`}>
                 Community Building & Inclusive Leadership
               </h2>
-               
-               <div className="about-card about-card--accent2">
-              <p>
-                Eileen is widely recognized as a connector and advocate within the supply
-                chain community. She has championed mentorship programs, scholarship
-                initiatives, and inclusive leadership platforms—particularly for women and
-                emerging leaders in logistics.
-              </p>
+
+              <div className={`about-card about-card--accent2 ${inView ? 'scroll-animate animated delay-200' : 'scroll-animate'}`}>
+                <p>
+                  Eileen is widely recognized as a connector and advocate within the supply
+                  chain community. She has championed mentorship programs, scholarship
+                  initiatives, and inclusive leadership platforms—particularly for women and
+                  emerging leaders in logistics.
+                </p>
               </div>
 
               <div className="about-statRow">
-                <div className="about-stat">
-                  <div className="about-statNum">7</div>
-                  <div className="about-statLabel">Industry conferences spoken at in 2025</div>
-                </div>
-
-                <div className="about-stat">
-                  <div className="about-statNum">3</div>
-                  <div className="about-statLabel">New mentees this year</div>
-                </div>
-
-                <div className="about-stat">
-                  <div className="about-statNum">10</div>
-                  <div className="about-statLabel">Months since Apex Tide launched</div>
-                </div>
-              </div>
-               
-               <div className="about-card about-card--accent1">
-              <p>
-                The result of Eileen’s leadership is not just stronger programs or better
-                companies—it is a more prepared, more confident, and more connected supply
-                chain workforce.
-              </p>
+                {statItems.map((stat, index) => (
+                  <div 
+                    key={index}
+                    ref={el => statsRef.current[index] = el}
+                    className={`about-stat ${animatedStats[index] ? 'animate-scale-in animated' : 'animate-init'}`}
+                  >
+                    <div className="about-statNum">{stat.number}</div>
+                    <div className="about-statLabel">{stat.label}</div>
+                  </div>
+                ))}
               </div>
 
-              <div className="about-card">
+              <div className={`about-card about-card--accent1 ${inView ? 'scroll-animate animated delay-600' : 'scroll-animate'}`}>
+                <p>
+                  The result of Eileen's leadership is not just stronger programs or better
+                  companies—it is a more prepared, more confident, and more connected supply
+                  chain workforce.
+                </p>
+              </div>
+
+              <div className={`about-card ${inView ? 'scroll-animate animated delay-700' : 'scroll-animate'}`}>
                 <h3 className="about-cardTitle">Apex Tide Consulting Momentum</h3>
 
                 <ul className="about-list">
-                  <li>5 recurring monthly clients since inception</li>
-                  <li>3 long-term technology-focused clients</li>
-                  <li>1 active project-based training engagement</li>
-                  <li>4 additional clients in the pipeline with no prospecting</li>
+                  {[
+                    "5 recurring monthly clients since inception",
+                    "3 long-term technology-focused clients",
+                    "1 active project-based training engagement",
+                    "4 additional clients in the pipeline with no prospecting"
+                  ].map((item, index) => (
+                    <li 
+                      key={index}
+                      className={inView ? `animated delay-${700 + index * 100}` : ''}
+                    >
+                      {item}
+                    </li>
+                  ))}
                 </ul>
 
                 <p>
@@ -121,14 +186,9 @@ export default function AboutSection2() {
                   go-to-market, and alignment programs.
                 </p>
               </div>
-
-            
-
             </div>
           </div>
-          
         </div>
-        
       </div>
     </section>
   );

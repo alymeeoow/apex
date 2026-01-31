@@ -1,11 +1,9 @@
-/* ============ GLOBAL FIXES (prevents right-side scroll) ============ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* clip is better than hidden (prevents sideways scrolling without creating scrollbars) */
 html,
 body {
   width: 100%;
@@ -13,7 +11,6 @@ body {
   overflow-x: clip;
 }
 
-/* fallback for browsers that don't support overflow-x: clip */
 @supports not (overflow-x: clip) {
   html,
   body {
@@ -21,7 +18,6 @@ body {
   }
 }
 
-/* common overflow offenders */
 img,
 svg,
 video,
@@ -44,14 +40,26 @@ canvas {
   }
 }
 
-/* ============ YOUR EXISTING CSS ============ */
+/* Font optimization */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dmsans/v14/rP2Hp2ywxg089UriO5Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 .apex-home {
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: #ffffff;
   color: var(--text-primary);
   line-height: 1.75;
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 @supports not (overflow-x: clip) {
@@ -132,7 +140,7 @@ canvas {
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 72px);
   width: 100%;
-  min-width: 0; /* ✅ prevents grid overflow */
+  min-width: 0;
 }
 
 .apex-split,
@@ -141,7 +149,7 @@ canvas {
   grid-template-columns: var(--side-col) minmax(0, 1fr);
   gap: clamp(24px, 3vw, 56px);
   align-items: start;
-  min-width: 0; /* ✅ prevents grid overflow */
+  min-width: 0;
 }
 
 .apex-split.reverse,
@@ -167,21 +175,24 @@ canvas {
 
 .apex-side p {
   margin-top: clamp(16px, 2vw, 20px);
-  font-size: clamp(14px, 1.6vw, 16px);
+  font-size: clamp(16px, 1.8vw, 18px);
   line-height: 1.7;
+  font-weight: 600;
   color: var(--text-secondary);
   padding: clamp(16px, 2vw, 22px) clamp(16px, 2vw, 20px);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-left: 4px solid var(--primary);
   border-radius: var(--radius);
   max-width: 100%;
+  letter-spacing: -0.01em;
 }
 
 .apex-main,
 .apex-after-col {
   width: 100%;
-  min-width: 0; /* ✅ prevents text/cards expanding grid */
+  min-width: 0;
 }
 
 .apex-text {
@@ -189,70 +200,86 @@ canvas {
   min-width: 0;
 }
 
+/* Enhanced paragraph visibility */
 .apex-main p,
 .apex-after-col p {
   font-size: clamp(16px, 1.8vw, 18px);
-  line-height: 1.7;
+  font-weight: 500;
+  line-height: 1.75;
   color: var(--text-primary);
-  margin-bottom: clamp(14px, 2vw, 18px);
-  letter-spacing: -0.012em;
-  overflow-wrap: anywhere;
+  margin-bottom: clamp(16px, 2vw, 20px);
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
+/* Enhanced list items */
 .apex-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px 0;
+  margin: 0 0 28px 0;
   display: grid;
-  gap: 16px;
+  gap: 18px;
   min-width: 0;
 }
 
 .apex-list li {
   position: relative;
-  padding-left: 32px;
-  line-height: 1.7;
+  padding-left: 36px;
+  line-height: 1.75;
   font-size: clamp(16px, 1.8vw, 18px);
+  font-weight: 500;
   color: var(--text-primary);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .apex-list li::before {
   content: "";
   position: absolute;
   left: 8px;
-  top: 0.85em;
-  width: 10px;
-  height: 10px;
+  top: 0.9em;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
   background: linear-gradient(180deg, var(--primary), rgba(74, 132, 197, 1));
-  box-shadow: 0 10px 20px rgba(74, 132, 197, 0.22);
+  box-shadow: 0 4px 12px rgba(74, 132, 197, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.9);
   transform: translateY(-50%);
+  z-index: 1;
 }
 
+/* Enhanced eyebrow */
 .apex-eyebrow {
-  font-size: clamp(11px, 1vw, 13px);
-  letter-spacing: 0.18em;
+  font-size: clamp(12px, 1.1vw, 14px);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--primary);
-  margin-bottom: clamp(8px, 1vw, 10px);
+  color: #1E40AF;
+  margin-bottom: clamp(10px, 1.2vw, 12px);
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(30, 64, 175, 0.08);
+  border-radius: 20px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
+/* Enhanced title with better contrast */
 .apex-title {
   position: relative;
   display: inline-block;
-  padding-bottom: clamp(10px, 1.5vw, 14px);
-  font-size: clamp(28px, 4vw, 44px);
+  padding-bottom: clamp(12px, 1.8vw, 16px);
+  font-size: clamp(32px, 4.5vw, 52px);
   font-weight: 800;
-  color: var(--primary-dark);
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-  margin-bottom: clamp(14px, 2vw, 18px);
-
-  /* ✅ prevent title from causing overflow */
+  color: #1E293B;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: clamp(16px, 2.2vw, 20px);
   max-width: 100%;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .apex-title::after {
@@ -260,32 +287,37 @@ canvas {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: clamp(60px, 8vw, 76px);
-  height: 3px;
+  width: clamp(70px, 9vw, 84px);
+  height: 4px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--primary), rgba(74, 132, 197, 0.9));
-  box-shadow: 0 10px 24px rgba(74, 132, 197, 0.22);
+  box-shadow: 0 6px 20px rgba(74, 132, 197, 0.25);
 }
 
+/* Enhanced subtitle */
 .apex-subtitle {
-  font-size: clamp(20px, 2.8vw, 30px);
+  font-size: clamp(32px, 3.2vw, 44px);
   font-weight: 800;
-  color: var(--primary-dark);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: clamp(12px, 1.5vw, 14px);
+  color: #1E293B;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: clamp(14px, 1.8vw, 16px);
   max-width: 100%;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* Enhanced signoff */
 .apex-signoff {
-  font-weight: 800;
-  color: var(--primary-dark);
+  font-weight: 700;
+  color: #1E293B;
   font-size: clamp(16px, 1.8vw, 18px);
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 .apex-after {
-  margin-top: clamp(16px, 3vw, 28px);
+  margin-top: clamp(20px, 3.2vw, 32px);
   min-width: 0;
 }
 
@@ -311,6 +343,12 @@ canvas {
     --side-col: clamp(360px, 44vw, 520px);
     --img-h: clamp(280px, 34vw, 460px);
   }
+  
+  .apex-main p,
+  .apex-after-col p,
+  .apex-list li {
+    line-height: 1.7;
+  }
 }
 
 @media (max-width: 980px) {
@@ -323,7 +361,7 @@ canvas {
   .apex-after,
   .apex-after.reverse {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 24px;
   }
 
   .apex-after-col,
@@ -334,7 +372,8 @@ canvas {
 
   .apex-main p,
   .apex-after-col p {
-    font-size: 16.5px;
+    font-size: 17px;
+    line-height: 1.7;
   }
 
   .apex-after-wide .apex-text {
@@ -344,11 +383,11 @@ canvas {
 
 @media (max-width: 768px) {
   .apex-section {
-    padding: 60px 0;
+    padding: 64px 0;
   }
 
   .apex-shell {
-    padding: 0 24px;
+    padding: 0 28px;
   }
 
   .apex-split,
@@ -360,8 +399,58 @@ canvas {
   }
 
   .apex-title {
-    font-size: 28px;
+    font-size: 30px;
     margin-bottom: 20px;
+    line-height: 1.15;
+  }
+
+  .apex-subtitle {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .apex-main p,
+  .apex-after-col p,
+  .apex-list li {
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+  }
+
+  .apex-list li {
+    padding-left: 30px;
+  }
+
+  .apex-list li::before {
+    left: 6px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .apex-eyebrow {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .apex-section {
+    padding: 56px 0;
+  }
+
+  .apex-shell {
+    padding: 0 24px;
+  }
+
+  .apex-title {
+    font-size: 28px;
+    padding-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .apex-subtitle {
+    font-size: 26px;
+    line-height: 1.2;
   }
 
   .apex-main p,
@@ -371,18 +460,25 @@ canvas {
     line-height: 1.7;
   }
 
+  .side-image {
+    height: 260px;
+  }
+
   .apex-list li {
     padding-left: 28px;
   }
 
   .apex-list li::before {
     left: 6px;
-    width: 8px;
-    height: 8px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
+  :root {
+    --shell-pad: 24px;
+    --img-h: 240px;
+  }
+
   .apex-section {
     padding: 48px 0;
   }
@@ -393,46 +489,12 @@ canvas {
 
   .apex-title {
     font-size: 26px;
-    padding-bottom: 12px;
+    line-height: 1.15;
   }
 
-  .apex-main p,
-  .apex-after-col p,
-  .apex-list li {
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  .side-image {
-    
-    height: 240px;
-  }
-
-  .apex-list li {
-    padding-left: 26px;
-  }
-
-  .apex-list li::before {
-    left: 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --shell-pad: 22px;
-    --img-h: 240px;
-  }
-
-  .apex-section {
-    padding: 48px 0;
-  }
-
-  .apex-shell {
-    padding: 0 16px;
-  }
-
-  .apex-title {
+  .apex-subtitle {
     font-size: 24px;
+    line-height: 1.2;
   }
 
   .apex-main p,
@@ -440,6 +502,7 @@ canvas {
   .apex-list li {
     font-size: 15px;
     line-height: 1.7;
+    letter-spacing: 0;
   }
 
   .side-image {
@@ -447,13 +510,18 @@ canvas {
   }
 
   .apex-list li {
-    padding-left: 24px;
+    padding-left: 26px;
   }
 
   .apex-list li::before {
-    left: 4px;
-    width: 7px;
-    height: 7px;
+    left: 5px;
+    width: 9px;
+    height: 9px;
+  }
+  
+  .apex-eyebrow {
+    font-size: 12px;
+    padding: 4px 10px;
   }
 }
 
@@ -463,18 +531,24 @@ canvas {
   }
 
   .apex-shell {
-    padding: 0 12px;
+    padding: 0 16px;
   }
 
   .apex-title {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .apex-subtitle {
     font-size: 22px;
+    line-height: 1.2;
   }
 
   .apex-main p,
   .apex-after-col p,
   .apex-list li {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
   }
 
   .side-image {
@@ -482,15 +556,49 @@ canvas {
   }
 
   .apex-list li {
-    padding-left: 22px;
+    padding-left: 24px;
   }
 
   .apex-list li::before {
     left: 4px;
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
 }
+
+/* Font size adjustment for very small screens */
+@media (max-width: 320px) {
+  .apex-main p,
+  .apex-after-col p,
+  .apex-list li {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  
+  .apex-title {
+    font-size: 22px;
+  }
+  
+  .apex-subtitle {
+    font-size: 20px;
+  }
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .apex-home {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+  
+  .apex-main p,
+  .apex-after-col p,
+  .apex-list li {
+    font-weight: 500;
+  }
+}
+
+
+
 
 @media (hover: none) {
   .side-image img {
@@ -507,5 +615,25 @@ canvas {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+
+@media print {
+  .apex-home {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .apex-title,
+  .apex-subtitle {
+    color: #000 !important;
+  }
+  
+  .apex-main p,
+  .apex-after-col p,
+  .apex-list li {
+    font-size: 11pt;
+    color: #000 !important;
   }
 }

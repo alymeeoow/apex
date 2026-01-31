@@ -1,5 +1,4 @@
-// Services.jsx
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../../assets/styles/pages/services.css";
 
 // ✅ react-icons (install: npm i react-icons)
@@ -55,9 +54,41 @@ function MiniIcon({ name }) {
   );
 }
 
-function LaneCard({ icon, title, desc, items }) {
+function LaneCard({ icon, title, desc, items, delay = 0 }) {
+  const [inView, setInView] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "100px"
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <article className="svc-laneCard">
+    <article 
+      className={`svc-laneCard ${inView ? 'svc-animated' : ''}`}
+      ref={cardRef}
+      style={{ animationDelay: `${delay}ms` }}
+    >
       <header className="svc-laneHead">
         <div className="svc-laneTitle">
           <span className="svc-laneIcon">
@@ -91,8 +122,12 @@ function LaneCard({ icon, title, desc, items }) {
       </div>
 
       <div className={`svc-laneGrid ${items.length > 8 ? "is-2col" : ""}`}>
-        {items.map((t) => (
-          <div className="svc-lineItem" key={t}>
+        {items.map((t, index) => (
+          <div 
+            className={`svc-lineItem ${inView ? 'svc-animated' : ''}`}
+            key={t}
+            style={{ animationDelay: `${delay + 100 + index * 50}ms` }}
+          >
             <span className="svc-bullet" aria-hidden="true" />
             <span className="svc-lineText">{t}</span>
           </div>
@@ -102,66 +137,97 @@ function LaneCard({ icon, title, desc, items }) {
   );
 }
 
+function useScrollAnimation() {
+  const [inView, setInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "100px"
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, inView];
+}
+
 export default function Services() {
-  const speakingBg =
-    "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=2400&q=80";
-  const courseBg =
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&q=80";
+  const speakingBg = "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=2400&q=80";
+  const courseBg = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&q=80";
+  
+  const [heroRef, heroInView] = useScrollAnimation();
+  const [speakingRef, speakingInView] = useScrollAnimation();
+  const [courseRef, courseInView] = useScrollAnimation();
+  const [lanesRef, lanesInView] = useScrollAnimation();
+  const [centerRef, centerInView] = useScrollAnimation();
 
   return (
     <main className="apex-services">
       {/* HERO */}
-      <section className="svc-hero" aria-label="Services header">
+      <section className="svc-hero" aria-label="Services header" ref={heroRef}>
         <div className="svc-shell">
-          <div className="svc-heroInner">
+          <div className={`svc-heroInner ${heroInView ? 'svc-animated' : ''}`}>
             <div className="svc-heroCopy">
-              <div className="svc-heroEyebrow">
-            
-              </div>
+              <div className="svc-heroEyebrow"></div>
 
-              <h1 className="svc-h1">Our Services</h1>
+              <h1 className={`svc-h1 ${heroInView ? 'svc-animated' : ''}`} 
+                  style={{ animationDelay: '100ms' }}>
+                Our Services
+              </h1>
 
-              <p className="svc-lead">
+              <p className={`svc-lead ${heroInView ? 'svc-animated' : ''}`}
+                 style={{ animationDelay: '200ms' }}>
                 Clear offerings, built for logistics teams. Pick a lane, mix what you need, and ship outcomes—without noise.
               </p>
 
               <div className="svc-heroBadges">
-                <span className="svc-badge">
-                  <MiniIcon name="speaking" />
-                  Speaking Engagement
-                </span>
-                <span className="svc-badge">
-                  <MiniIcon name="spark" />
-                  Course Development
-                </span>
-                <span className="svc-badge">
-                  <MiniIcon name="modal" />
-                  Modal Expertise
-                </span>
-                <span className="svc-badge">
-                  <MiniIcon name="process" />
-                  Process Development
-                </span>
-                <span className="svc-badge">
-                  <MiniIcon name="fractional" />
-                  Fractional Leadership
-                </span>
+                {["Speaking Engagement", "Course Development", "Modal Expertise", "Process Development", "Fractional Leadership"].map((badge, index) => (
+                  <span 
+                    key={badge}
+                    className={`svc-badge ${heroInView ? 'svc-animated' : ''}`}
+                    style={{ animationDelay: `${300 + index * 50}ms` }}
+                  >
+                    <MiniIcon name={
+                      badge.includes("Speaking") ? "speaking" :
+                      badge.includes("Course") ? "spark" :
+                      badge.includes("Modal") ? "modal" :
+                      badge.includes("Process") ? "process" : "fractional"
+                    } />
+                    {badge}
+                  </span>
+                ))}
               </div>
             </div>
 
             <div className="svc-heroAside" aria-hidden="true">
-              <div className="svc-metric">
-                <div className="svc-metricNum">01</div>
-                <div className="svc-metricLabel">Pick a lane</div>
-              </div>
-              <div className="svc-metric">
-                <div className="svc-metricNum">02</div>
-                <div className="svc-metricLabel">Mix &amp; match</div>
-              </div>
-              <div className="svc-metric">
-                <div className="svc-metricNum">03</div>
-                <div className="svc-metricLabel">Execute</div>
-              </div>
+              {["Pick a lane", "Mix & match", "Execute"].map((label, index) => (
+                <div 
+                  key={label}
+                  className={`svc-metric ${heroInView ? 'svc-animated' : ''}`}
+                  style={{ animationDelay: `${500 + index * 100}ms` }}
+                >
+                  <div className="svc-metricNum">0{index + 1}</div>
+                  <div className="svc-metricLabel">{label}</div>
+                </div>
+              ))}
             </div>
 
             <div className="svc-heroDecor" aria-hidden="true">
@@ -174,12 +240,12 @@ export default function Services() {
       </section>
 
       {/* SPEAKING */}
-      <section className="svc-section">
+      <section className="svc-section" ref={speakingRef}>
         <div className="svc-shell">
-          <div className="svc-split">
+          <div className={`svc-split ${speakingInView ? 'svc-animated' : ''}`}>
             <div className="svc-photoWrap">
               <div
-                className="svc-photo"
+                className={`svc-photo ${speakingInView ? 'svc-animated' : ''}`}
                 aria-hidden="true"
                 style={{
                   backgroundImage: `
@@ -193,41 +259,36 @@ export default function Services() {
                   `,
                 }}
               />
-              <div className="svc-photoTag">
+              <div className={`svc-photoTag ${speakingInView ? 'svc-animated' : ''}`}
+                   style={{ animationDelay: '200ms' }}>
                 <MiniIcon name="speaking" />
                 <span>Speaking</span>
               </div>
             </div>
 
-            <div className="svc-copy">
+            <div className={`svc-copy ${speakingInView ? 'svc-animated' : ''}`}
+                 style={{ animationDelay: '100ms' }}>
               <div className="svc-kicker">Speaking Engagement</div>
-              <h2 className="svc-h2">High-signal sessions that don’t waste the room.</h2>
+              <h2 className="svc-h2">High-signal sessions that don't waste the room.</h2>
               <p className="svc-p">
                 Built for logistics audiences—direct, practical, and tailored to the format. Use it to align leaders, sharpen teams, and move decisions forward.
               </p>
 
-              {/* ✅ react-icons */}
               <div className="svc-chipList">
-                <span className="svc-chip">
-                  <MdWorkspaces className="svc-chipIco" aria-hidden="true" />
-                  Conference
-                </span>
-                <span className="svc-chip">
-                  <MdGroups className="svc-chipIco" aria-hidden="true" />
-                  Trade Show
-                </span>
-                <span className="svc-chip">
-                  <MdPodcasts className="svc-chipIco" aria-hidden="true" />
-                  Podcast
-                </span>
-                <span className="svc-chip">
-                  <MdMic className="svc-chipIco" aria-hidden="true" />
-                  Panel
-                </span>
-                <span className="svc-chip">
-                  <MdOutlineLiveTv className="svc-chipIco" aria-hidden="true" />
-                  LinkedIn Live
-                </span>
+                {["Conference", "Trade Show", "Podcast", "Panel", "LinkedIn Live"].map((chip, index) => (
+                  <span 
+                    key={chip}
+                    className={`svc-chip ${speakingInView ? 'svc-animated' : ''}`}
+                    style={{ animationDelay: `${300 + index * 50}ms` }}
+                  >
+                    {chip === "Conference" && <MdWorkspaces className="svc-chipIco" aria-hidden="true" />}
+                    {chip === "Trade Show" && <MdGroups className="svc-chipIco" aria-hidden="true" />}
+                    {chip === "Podcast" && <MdPodcasts className="svc-chipIco" aria-hidden="true" />}
+                    {chip === "Panel" && <MdMic className="svc-chipIco" aria-hidden="true" />}
+                    {chip === "LinkedIn Live" && <MdOutlineLiveTv className="svc-chipIco" aria-hidden="true" />}
+                    {chip}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -238,6 +299,7 @@ export default function Services() {
       <section
         className="svc-courseBand"
         aria-label="Course development"
+        ref={courseRef}
         style={{
           backgroundImage: `
             linear-gradient(
@@ -252,58 +314,59 @@ export default function Services() {
       >
         <div className="svc-shell">
           <div className="svc-courseInner">
-            <div className="svc-courseTop">
+            <div className={`svc-courseTop ${courseInView ? 'svc-animated' : ''}`}>
               <div>
                 <div className="svc-kicker svc-kicker--light">Course Development</div>
                 <h2 className="svc-h2 svc-h2--light">Curriculum that teams can run without you.</h2>
               </div>
               <p className="svc-courseLead">
-                Built as modular tracks so companies can onboard, reinforce, and measure performance—without creating “training theater.”
+                Built as modular tracks so companies can onboard, reinforce, and measure performance—without creating "training theater."
               </p>
             </div>
 
             <div className="svc-courseCards">
-              <article className="svc-courseCard">
-                <h3 className="svc-courseTitle">Operational</h3>
-                <div className="svc-chipRow">
-                  <span className="svc-chip svc-chip--dark">Tracking</span>
-                  <span className="svc-chip svc-chip--dark">Dispatching</span>
-                  <span className="svc-chip svc-chip--dark">Load Entry</span>
-                  <span className="svc-chip svc-chip--dark">Scheduling</span>
-                </div>
-              </article>
-
-              <article className="svc-courseCard">
-                <h3 className="svc-courseTitle">Sales</h3>
-                <div className="svc-chipRow">
-                  <span className="svc-chip svc-chip--dark">Carrier Sales</span>
-                  <span className="svc-chip svc-chip--dark">Shipper-facing Sales</span>
-                  <span className="svc-chip svc-chip--dark">Account Management</span>
-                  <span className="svc-chip svc-chip--dark">Assessorial Management</span>
-                </div>
-              </article>
-
-              <article className="svc-courseCard">
-                <h3 className="svc-courseTitle">Leadership</h3>
-                <div className="svc-chipRow">
-                  <span className="svc-chip svc-chip--dark">Executive Guidance &amp; Coaching</span>
-                  <span className="svc-chip svc-chip--dark">Coaching</span>
-                  <span className="svc-chip svc-chip--dark">Supervision</span>
-                  <span className="svc-chip svc-chip--dark">Feedback</span>
-                  <span className="svc-chip svc-chip--dark">Performance</span>
-                  <span className="svc-chip svc-chip--dark">KPI Development</span>
-                  <span className="svc-chip svc-chip--dark">Accountability</span>
-                </div>
-              </article>
+              {[
+                {
+                  title: "Operational",
+                  chips: ["Tracking", "Dispatching", "Load Entry", "Scheduling"]
+                },
+                {
+                  title: "Sales",
+                  chips: ["Carrier Sales", "Shipper-facing Sales", "Account Management", "Assessorial Management"]
+                },
+                {
+                  title: "Leadership",
+                  chips: ["Executive Guidance & Coaching", "Coaching", "Supervision", "Feedback", "Performance", "KPI Development", "Accountability"]
+                }
+              ].map((card, index) => (
+                <article 
+                  key={card.title}
+                  className={`svc-courseCard ${courseInView ? 'svc-animated' : ''}`}
+                  style={{ animationDelay: `${200 + index * 100}ms` }}
+                >
+                  <h3 className="svc-courseTitle">{card.title}</h3>
+                  <div className="svc-chipRow">
+                    {card.chips.map((chip, chipIndex) => (
+                      <span 
+                        key={chip}
+                        className={`svc-chip svc-chip--dark ${courseInView ? 'svc-animated' : ''}`}
+                        style={{ animationDelay: `${300 + chipIndex * 50}ms` }}
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* BOTTOM */}
-      <section className="svc-section svc-section--tight">
+      <section className="svc-section svc-section--tight" ref={lanesRef}>
         <div className="svc-shell">
-          <div className="svc-center">
+          <div className={`svc-center ${centerInView ? 'svc-animated' : ''}`} ref={centerRef}>
             <h2 className="svc-h2">Explore what you need—fast.</h2>
             <p className="svc-p svc-p--center">
               Three lanes to browse: modal expertise, process development, and fractional leadership.
@@ -327,6 +390,7 @@ export default function Services() {
                 "Dry",
                 "Open Deck",
               ]}
+              delay={100}
             />
 
             <LaneCard
@@ -341,6 +405,7 @@ export default function Services() {
                 "Comp Plans",
                 "Career Mapping & Growth",
               ]}
+              delay={200}
             />
 
             <LaneCard
@@ -348,6 +413,7 @@ export default function Services() {
               title="Fractional Leadership"
               desc="Add senior bandwidth without adding headcount."
               items={["Sales", "Operations", "Marketing", "GTM strategies", "Written collateral"]}
+              delay={300}
             />
           </div>
         </div>

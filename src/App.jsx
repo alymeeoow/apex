@@ -12,11 +12,11 @@ import Contact from "./components/pages/contact/contact.jsx";
 import Faq from "./components/pages/faq/faq.jsx";
 import Empowerment from "./components/pages/empowerment/empowerment.jsx"
 
-
+// import Fund from "./components/pages/fund-raising/fundRaising.jsx"
 import ComingSoon from "./components/coming-soon/comingSoon.jsx";
 
+import { useUniversalAnimations } from "./hooks/universalAnimation.js";
 import "./App.css";
-
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,22 +32,55 @@ function ScrollToTop() {
   return null;
 }
 
+
+
 export default function App() {
+
+  useUniversalAnimations();
+
   return (
     <>
       <ScrollToTop />
 
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-               <Route path="/contact" element={<Contact />} />
-               <Route path="/faq" element={<Faq />} />
-                      <Route path="/empowerment" element={<Empowerment />} />
-
+      <Routes location={location}>
+        <Route path="/" element={
+          
+            <Home />
+         
+        } />
+        <Route path="/about" element={
+       
+            <About />
+         
+        } />
+        <Route path="/services" element={
+ 
+            <Services />
+ 
+        } />
+        <Route path="/contact" element={
       
+            <Contact />
+       
+        } />
+        <Route path="/faq" element={
+       
+            <Faq />
+   
+        } />
+        <Route path="/empowerment" element={
+    
+            <Empowerment />
+        
+        } />
+
+         {/* <Route path="/fund" element={
+    
+            <Fund />
+        
+        } /> */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

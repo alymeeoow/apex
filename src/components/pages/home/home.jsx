@@ -9,10 +9,10 @@ import Section4 from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
 
-import { useSectionReveal } from "../../../hooks/useSectionReveal"; 
+
 
 export default function Home() {
-  useSectionReveal();
+
 
   return (
     <main className="apex-home">

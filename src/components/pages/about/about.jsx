@@ -6,12 +6,12 @@ import "../../../assets/styles/pages/about.css";
 import AboutSection1 from "./aboutSection1";
 import AboutSection2 from "./aboutSection2";
 import AboutSection3 from "./aboutSection3";
+import AboutSection4 from "./aboutSection4";
 
 
-import { useSectionReveal } from "../../../hooks/useSectionReveal"; 
+
 
 export default function Home() {
-  useSectionReveal();
 
   return (
     <main className="apex-home">
@@ -20,6 +20,7 @@ export default function Home() {
       <AboutSection1 />
       <AboutSection2 />
       <AboutSection3 />
+         <AboutSection4/>
 
     </main>
   );

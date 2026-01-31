@@ -1,20 +1,67 @@
 // Empowerment.jsx
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "../../../assets/styles/pages/empowerment.css";
 import { MdArrowOutward } from "react-icons/md";
 import EmpowermentHero from "./empowermentHero";
-
 
 import EmpowermentImg1 from "../../../assets/images/home/empowerment.jpg";
 import EmpowermentImg2 from "../../../assets/images/home/eileen-choose.jpg";
 
 export default function Empowerment() {
+  const sectionRefs = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.15, // Trigger when 15% of element is visible
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add animation class
+          entry.target.classList.add("scroll-animate");
+          
+          // Add animation to child elements with delay
+          const cards = entry.target.querySelectorAll(".empower-card, .empower-mediaCard, .empower-infoCard");
+          cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.15}s`;
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    // Observe all sections
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Add ref to each section
+  const addToRefs = (el) => {
+    if (el && !sectionRefs.current.includes(el)) {
+      sectionRefs.current.push(el);
+    }
+  };
+
   return (
     <main className="apex-empower">
       <EmpowermentHero />
 
       {/* SECTION 1 */}
-      <section className="empower-section" id="empowerment-section-1">
+      <section 
+        className="empower-section" 
+        id="empowerment-section-1"
+        ref={addToRefs}
+      >
         <div className="empower-shell">
           <div className="empower-grid">
             {/* LEFT (sticky rail) */}
@@ -67,7 +114,7 @@ export default function Empowerment() {
                     <li>Creating systems that support advancement—not just entry</li>
                     <li>Mentoring, sponsoring, and advocating for women consistently</li>
                     <li>Teaching communication, confidence, and strategic thinking</li>
-                    <li>Normalizing women’s leadership in transportation spaces</li>
+                    <li>Normalizing women's leadership in transportation spaces</li>
                   </ul>
                 </div>
 
@@ -85,7 +132,11 @@ export default function Empowerment() {
       </section>
 
       {/* SECTION 2 */}
-      <section className="empower-section empower-alt" id="empowerment-section-2">
+      <section 
+        className="empower-section empower-alt" 
+        id="empowerment-section-2"
+        ref={addToRefs}
+      >
         <div className="empower-shell">
           <div className="empower-grid">
             {/* LEFT */}
@@ -116,17 +167,17 @@ export default function Empowerment() {
                   </div>
                 </div>
               </div>
-                 <div className="empower-card empower-card--accent1 ">
-                    <p>That is leadership.</p>
-                    <p>That is impact.</p>
-                    <p>And that is why she deserves the Empowering Women into Logistics Award.</p>
-                  </div>
+              <div className="empower-card empower-card--accent1">
+                <p>That is leadership.</p>
+                <p>That is impact.</p>
+                <p>And that is why she deserves the Empowering Women into Logistics Award.</p>
+              </div>
             </aside>
 
             {/* RIGHT */}
             <div className="empower-right">
               <div className="empower-rail">
-                          <div className="empower-eyebrow">CHOSEN</div>
+                <div className="empower-eyebrow">CHOSEN</div>
                 <h2 className="empower-title">If Chosen: Amplifying the Impact</h2>
 
                 <div className="empower-card empower-card--soft">
@@ -154,18 +205,14 @@ export default function Empowerment() {
                     leadership roles because someone like her showed them it was possible.
                   </p>
 
-               
-
                   <p>
                     I know I am biased, as I love her and am married to her, but there is no one
                     more deserving. She launched and built a woman-owned business in arguably one
                     of the most difficult markets and economies and has crushed it and far-exceeded
-                    expectations. Because she lives by her mantra, “be a good human” and she is the
+                    expectations. Because she lives by her mantra, "be a good human" and she is the
                     best human I know.
                   </p>
                 </div>
-
-             
               </div>
             </div>
           </div>
