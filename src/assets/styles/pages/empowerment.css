@@ -1,46 +1,243 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap");
 
-
-
-
 :root {
   --primary-dark: #07152b;
   --primary: #1e3a5f;
+  --primary-light: #4a84c5;
 
   --text: #0f172a;
   --muted: #475569;
+  --muted-light: #64748b;
 
-  --border: rgba(15, 23, 42, 0.12);
+  --border: rgba(15, 23, 42, 0.14);
   --border-strong: rgba(30, 58, 95, 0.22);
+  --border-light: rgba(15, 23, 42, 0.08);
 
-  --shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
-  --shadow-lg: 0 34px 90px rgba(15, 23, 42, 0.18);
+  --shadow: 0 18px 48px rgba(15, 23, 42, 0.14);
+  --shadow-lg: 0 34px 90px rgba(15, 23, 42, 0.20);
+  --shadow-soft: 0 8px 32px rgba(15, 23, 42, 0.08);
 
   --radius: 18px;
   --radius-lg: 26px;
+  --radius-sm: 12px;
 
   --shell-max: 1480px;
-  --shell-pad: clamp(22px, 3.5vw, 72px);
-  --gap: clamp(22px, 3vw, 56px);
+  --shell-pad: clamp(24px, 3.5vw, 72px);
+  --gap: clamp(24px, 3vw, 56px);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  
+  /* Animation variables */
+  --scroll-animation-duration: 1s;
+  --scroll-animation-stagger: 0.15s;
 }
 
 .apex-empower {
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--text);
   background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
+/* Scroll animation base styles */
+.scroll-animate .empower-card,
+.scroll-animate .empower-mediaCard,
+.scroll-animate .empower-infoCard,
+.scroll-animate .empower-miniStat,
+.scroll-animate .empower-quote,
+.scroll-animate .empower-chip,
+.scroll-animate .empower-affirm {
+  opacity: 0;
+  animation: fadeSlideUp var(--scroll-animation-duration) var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-card {
+  animation-name: fadeSlideUpCard;
+}
+
+.scroll-animate .empower-mediaCard,
+.scroll-animate .empower-infoCard {
+  animation-name: fadeSlideUpMedia;
+}
+
+.scroll-animate .empower-miniStat {
+  animation-name: fadeSlideUpMini;
+}
+
+.scroll-animate .empower-quote {
+  animation-name: fadeSlideInQuote;
+}
+
+.scroll-animate .empower-eyebrow {
+  opacity: 0;
+  animation: fadeSlideLeft var(--scroll-animation-duration) var(--ease) 0.2s forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-title {
+  opacity: 0;
+  animation: fadeSlideUp var(--scroll-animation-duration) var(--ease) 0.3s forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-lead {
+  opacity: 0;
+  animation: fadeSlideUp var(--scroll-animation-duration) var(--ease) 0.4s forwards;
+  animation-play-state: paused;
+}
+
+/* Start animations when class is added */
+.scroll-animate .empower-card,
+.scroll-animate .empower-mediaCard,
+.scroll-animate .empower-infoCard,
+.scroll-animate .empower-miniStat,
+.scroll-animate .empower-quote,
+.scroll-animate .empower-chip,
+.scroll-animate .empower-affirm,
+.scroll-animate .empower-eyebrow,
+.scroll-animate .empower-title,
+.scroll-animate .empower-lead {
+  animation-play-state: running;
+}
+
+/* Animation keyframes */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUpCard {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeSlideUpMedia {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotateX(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes fadeSlideUpMini {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes fadeSlideInQuote {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger animations for lists */
+.scroll-animate .empower-list li {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeSlideLeft var(--scroll-animation-duration) var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-list li:nth-child(1) { animation-delay: 0.5s; }
+.scroll-animate .empower-list li:nth-child(2) { animation-delay: 0.65s; }
+.scroll-animate .empower-list li:nth-child(3) { animation-delay: 0.8s; }
+.scroll-animate .empower-list li:nth-child(4) { animation-delay: 0.95s; }
+.scroll-animate .empower-list li:nth-child(5) { animation-delay: 1.1s; }
+
+.scroll-animate .empower-list li {
+  animation-play-state: running;
+}
+
+/* Stagger animations for mini stats */
+.scroll-animate .empower-miniStat:nth-child(1) { animation-delay: 0.5s; }
+.scroll-animate .empower-miniStat:nth-child(2) { animation-delay: 0.65s; }
+.scroll-animate .empower-miniStat:nth-child(3) { animation-delay: 0.8s; }
+
+/* Stagger animations for chips */
+.scroll-animate .empower-chip {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  animation: fadeSlideUpScale var(--scroll-animation-duration) var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-chip:nth-child(1) { animation-delay: 0.5s; }
+.scroll-animate .empower-chip:nth-child(2) { animation-delay: 0.6s; }
+.scroll-animate .empower-chip:nth-child(3) { animation-delay: 0.7s; }
+.scroll-animate .empower-chip:nth-child(4) { animation-delay: 0.8s; }
+.scroll-animate .empower-chip:nth-child(5) { animation-delay: 0.9s; }
+
+.scroll-animate .empower-chip {
+  animation-play-state: running;
+}
+
+@keyframes fadeSlideUpScale {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Section transition effects */
 .empower-section {
   padding: 120px 0;
   background: #fff;
   position: relative;
   overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.5s var(--ease);
 }
 
+/* Original CSS continues below... */
 .empower-section.empower-alt {
-  background: linear-gradient(180deg, #eaf2fb, #eef6fd);
+  background: linear-gradient(180deg, #f1f7ff, #f8fbff);
   box-shadow:
     inset 0 1px 0 rgba(15, 23, 42, 0.06),
     inset 0 -1px 0 rgba(15, 23, 42, 0.06);
@@ -55,7 +252,8 @@
 
 .empower-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));   gap: var(--gap);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gap);
   align-items: start;
   width: 100%;
 }
@@ -63,7 +261,7 @@
 .empower-left {
   grid-column: 1 / span 5;
   position: sticky;
-  top: 110px;
+  top: 120px;
   min-width: 0;
 }
 
@@ -72,29 +270,39 @@
   min-width: 0;
 }
 
-.empower-rail { width: 100%; min-width: 0; }
+.empower-rail { 
+  width: 100%; 
+  min-width: 0; 
+}
 
 .empower-leftStack {
   display: grid;
-  gap: 18px;
+  gap: 24px;
   min-width: 0;
 }
 
 .empower-mediaCard,
 .empower-infoCard {
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.60);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
   min-width: 0;
+  transition: all 0.4s var(--ease);
+}
+
+.empower-mediaCard:hover,
+.empower-infoCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 100px rgba(15, 23, 42, 0.22);
 }
 
 .empower-image {
   width: 100%;
-  height: clamp(280px, 22vw, 380px);
+  height: clamp(300px, 24vw, 420px);
   position: relative;
   overflow: hidden;
 }
@@ -105,9 +313,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(7, 21, 43, 0.16) 0%,
-    rgba(7, 21, 43, 0.30) 55%,
-    rgba(7, 21, 43, 0.48) 100%
+    rgba(7, 21, 43, 0.18) 0%,
+    rgba(7, 21, 43, 0.32) 55%,
+    rgba(7, 21, 43, 0.50) 100%
   );
   z-index: 1;
 }
@@ -120,80 +328,127 @@
   transition: transform 900ms var(--ease);
 }
 
-.empower-mediaCard:hover .empower-image img { transform: scale(1.02); }
+.empower-mediaCard:hover .empower-image img { 
+  transform: scale(1.02); 
+}
 
-.empower-infoCard { padding: 22px 22px 24px; }
+.empower-infoCard { 
+  padding: 28px 28px 30px; 
+}
 
+/* Enhanced Info Title */
 .empower-infoTitle {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
-  color: var(--primary-dark);
+  color: #0f172a;
   letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .empower-chipGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
+/* Enhanced Chip */
 .empower-chip {
-  padding: 10px 12px;
+  padding: 12px 16px;
   border-radius: 999px;
   border: 1px solid var(--border-strong);
-  background: rgba(255, 255, 255, 0.80);
-  font-size: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--primary-dark);
+  color: #0f172a;
+  transition: all 0.3s var(--ease);
+  box-shadow: var(--shadow-soft);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-.empower-miniStats { display: grid; gap: 10px; }
+.empower-chip:hover {
+  background: rgba(30, 58, 95, 0.95);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(30, 58, 95, 0.25);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.empower-miniStats { 
+  display: grid; 
+  gap: 14px; 
+}
 
 .empower-miniStat {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);   gap: 12px;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 16px;
   align-items: center;
-  padding: 12px 12px;
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.78);
+  padding: 16px 18px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
   min-width: 0;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
 }
 
+.empower-miniStat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(30, 58, 95, 0.2);
+  box-shadow: 0 20px 50px rgba(30, 58, 95, 0.18);
+}
+
+/* Enhanced Mini Numbers */
 .empower-miniNum {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 900;
-  color: var(--primary-dark);
+  color: #0f172a;
   line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
+/* Enhanced Mini Labels */
 .empower-miniLabel {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.4;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  font-weight: 600;
   min-width: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
+/* Enhanced Eyebrow */
 .empower-eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.24em;
+  font-size: 13px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 800;
-  color: rgba(30, 58, 95, 0.92);
-  margin-bottom: 12px;
+  color: #1E40AF;
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(30, 64, 175, 0.1);
+  border-radius: 20px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
 }
 
+/* Enhanced Title */
 .empower-title {
-  font-size: clamp(34px, 2.9vw, 50px);
+  font-size: clamp(36px, 3.2vw, 52px);
   font-weight: 900;
-  color: var(--primary-dark);
-  letter-spacing: -0.045em;
-  line-height: 1.12;
-  margin-bottom: 18px;
-  padding-bottom: 14px;
+  color: #0f172a;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
   position: relative;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .empower-title::after {
@@ -201,53 +456,72 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 76px;
-  height: 3px;
+  width: 84px;
+  height: 4px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--primary), rgba(74, 132, 197, 0.9));
-  box-shadow: 0 10px 24px rgba(74, 132, 197, 0.22);
+  box-shadow: 0 8px 24px rgba(74, 132, 197, 0.3);
 }
 
+/* Enhanced Lead Text */
 .empower-lead {
   font-size: 20px;
-  line-height: 1.95;
-  color: var(--muted);
-  margin-bottom: 30px;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 34px;
   max-width: 980px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
+/* Enhanced Paragraphs */
 .empower-rail p {
   font-size: 18px;
-  line-height: 1.95;
-  margin-bottom: 24px;
+  line-height: 1.8;
+  margin-bottom: 26px;
   letter-spacing: -0.01em;
-  color: rgba(71, 85, 105, 0.95);
-  overflow-wrap: anywhere; }
-
-.empower-card {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.86);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.60);
-  padding: 34px;
-  margin: 48px 0;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  min-width: 0;
+  color: #1e293b;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
+/* Enhanced Card */
+.empower-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  margin: 52px 0;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  min-width: 0;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.empower-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 100px rgba(15, 23, 42, 0.22);
+}
+
+/* Enhanced Card Title */
 .empower-cardTitle {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 900;
-  color: var(--primary-dark);
-  margin-bottom: 18px;
+  color: #0f172a;
+  margin-bottom: 22px;
   letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .empower-card--soft {
-  background: rgba(248, 250, 252, 0.92);
-  border-color: rgba(15, 23, 42, 0.10);
+  background: rgba(248, 250, 252, 0.95);
+  border-color: rgba(15, 23, 42, 0.12);
 }
 
 .empower-card--accent,
@@ -255,147 +529,308 @@
   background: linear-gradient(
     135deg,
     rgba(30, 58, 95, 0.12),
-    rgba(74, 132, 197, 0.16)
+    rgba(74, 132, 197, 0.18)
   );
-  border-color: rgba(30, 58, 95, 0.26);
+  border-color: rgba(30, 58, 95, 0.28);
 }
 
 .empower-card--accent1 {
-  
   margin-top: 130px; 
   font-size: 18px;
-
 }
 
+/* Enhanced List */
 .empower-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .empower-list li {
   position: relative;
-  padding-left: 30px;
-  line-height: 1.9;
+  padding-left: 36px;
+  line-height: 1.8;
   font-size: 18px;
-  color: rgba(71, 85, 105, 0.95);
-  overflow-wrap: anywhere; }
+  color: #334155;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  overflow-wrap: break-word;
+}
 
 .empower-list li::before {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 0.75em;
-  width: 10px;
-  height: 10px;
+  left: 8px;
+  top: 0.85em;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(74, 132, 197, 1), rgba(30, 58, 95, 1));
-  box-shadow: 0 10px 20px rgba(74, 132, 197, 0.22);
+  box-shadow: 0 8px 20px rgba(74, 132, 197, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.9);
   transform: translateY(-50%);
+  z-index: 1;
 }
 
+/* Enhanced Quote */
 .empower-quote {
   margin: 34px 0 0;
-  padding: 34px 36px 34px 54px;
+  padding: 40px 42px 40px 62px;
   border-radius: var(--radius-lg);
-  background: rgba(248, 250, 252, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
-  color: rgba(71, 85, 105, 0.95);
-  border-left: 6px solid rgba(30, 58, 95, 0.85);
+  background: rgba(248, 250, 252, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
+  color: #475569;
+  border-left: 6px solid rgba(30, 58, 95, 0.9);
   position: relative;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .empower-quote::before {
   content: "“";
   position: absolute;
-  left: 18px;
-  top: 6px;
-  font-size: 68px;
+  left: 20px;
+  top: 10px;
+  font-size: 76px;
   line-height: 1;
-  color: rgba(74, 132, 197, 0.26);
+  color: rgba(74, 132, 197, 0.3);
   font-weight: 900;
+  font-family: Georgia, serif;
 }
 
+/* Enhanced Affirm */
 .empower-affirm {
   margin: 18px 0 22px;
-  padding: 18px 20px;
+  padding: 22px 24px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(30, 58, 95, 0.18);
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
   display: grid;
-  gap: 8px;
+  gap: 12px;
   margin-top: 110px;
+  transition: all 0.3s var(--ease);
+}
+
+.empower-affirm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(30, 58, 95, 0.2);
 }
 
 .empower-affirm p {
   margin: 0;
   font-weight: 900;
-  color: var(--primary-dark);
+  color: #0f172a;
   letter-spacing: -0.01em;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  font-size: 17px;
+  line-height: 1.4;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
+/* Enhanced CTA */
 .empower-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
-  border-radius: 16px;
-  background: rgba(30, 58, 95, 0.08);
-  border: 1px solid rgba(30, 58, 95, 0.18);
-  font-weight: 900;
-  color: var(--primary-dark);
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 18px;
+  background: rgba(30, 58, 95, 0.1);
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  font-weight: 800;
+  color: #0f172a;
   text-decoration: none;
-  transition: transform 200ms var(--ease), background 200ms var(--ease);
+  transition: all 0.3s var(--ease);
   max-width: 100%;
+  box-shadow: var(--shadow-soft);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .empower-cta:hover {
-  transform: translateY(-2px);
-  background: rgba(30, 58, 95, 0.14);
+  transform: translateY(-4px);
+  background: rgba(30, 58, 95, 0.95);
+  color: white;
+  border-color: rgba(30, 58, 95, 0.95);
+  box-shadow: 0 20px 50px rgba(30, 58, 95, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .empower-left {
+    grid-column: 1 / span 4;
+  }
+  
+  .empower-right {
+    grid-column: 5 / -1;
+  }
+}
 
 @media (max-width: 1100px) {
   .empower-left {
     position: relative;
     top: 0;
     grid-column: 1 / -1;
+    margin-bottom: 40px;
   }
 
   .empower-right {
     grid-column: 1 / -1;
   }
+  
+  .empower-title {
+    text-align: center;
+  }
+  
+  .empower-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .empower-eyebrow {
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .empower-lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-@media (max-width: 768px) {
-  .empower-section { padding: 90px 0; }
+@media (max-width: 900px) {
+  .empower-section { 
+    padding: 90px 0; 
+  }
 
   .empower-shell {
     padding-left: 5vw;
     padding-right: 5vw;
   }
 
-  .empower-grid { gap: 26px; }
+  .empower-grid { 
+    gap: 32px; 
+  }
 
-  .empower-title { text-align: center; }
-  .empower-title::after { left: 50%; transform: translateX(-50%); }
-  .empower-eyebrow { text-align: center; }
+  .empower-leftStack {
+    gap: 20px;
+  }
 
-  .empower-lead { font-size: 17px; text-align: center; line-height: 1.75; }
-  .empower-rail p { font-size: 16px; line-height: 1.8; }
+  .empower-image {
+    height: clamp(280px, 40vw, 380px);
+  }
 
-  .empower-infoCard { text-align: center; }
-  .empower-chipGrid { justify-content: center; }
+  .empower-title { 
+    font-size: 32px; 
+    padding-bottom: 16px;
+  }
+  
+  .empower-title::after {
+    width: 70px;
+  }
+  
+  .empower-lead { 
+    font-size: 19px; 
+    line-height: 1.7; 
+  }
+  
+  .empower-rail p { 
+    font-size: 17px; 
+    line-height: 1.75; 
+  }
 
-  .empower-card { padding: 24px; margin: 34px 0; }
+  .empower-infoCard { 
+    text-align: center; 
+    padding: 24px;
+  }
+  
+  .empower-chipGrid { 
+    justify-content: center; 
+  }
 
-  .empower-affirm { margin-top: 28px; } }
+  .empower-card { 
+    padding: 32px; 
+    margin: 40px 0; 
+  }
+  
+  .empower-affirm { 
+    margin-top: 28px; 
+  }
+  
+  .empower-card--accent1 {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .empower-section { 
+    padding: 80px 0; 
+  }
+
+  .empower-title { 
+    font-size: 30px; 
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+  }
+  
+  .empower-title::after {
+    width: 60px;
+  }
+  
+  .empower-lead { 
+    font-size: 18px; 
+    line-height: 1.7; 
+    margin-bottom: 28px;
+  }
+  
+  .empower-rail p { 
+    font-size: 16px; 
+    line-height: 1.7; 
+  }
+  
+  .empower-card { 
+    padding: 28px; 
+    margin: 32px 0; 
+  }
+  
+  .empower-cardTitle {
+    font-size: 21px;
+  }
+  
+  .empower-quote {
+    padding: 32px 28px 32px 52px;
+  }
+  
+  .empower-quote::before {
+    left: 18px;
+    top: 16px;
+    font-size: 64px;
+  }
+  
+  .empower-infoTitle {
+    font-size: 22px;
+  }
+  
+  .empower-miniStat {
+    grid-template-columns: 52px minmax(0, 1fr);
+    padding: 14px;
+  }
+  
+  .empower-miniNum {
+    font-size: 24px;
+  }
+}
 
 @media (max-width: 640px) {
   .empower-shell {
@@ -403,21 +838,73 @@
     padding-right: 4.5vw;
   }
 
-  .empower-title { font-size: 28px; }
-
-  .empower-card { padding: 22px; }
-
-  .empower-quote {
-    padding: 24px 18px 24px 40px;
+  .empower-title { 
+    font-size: 28px; 
+    padding-bottom: 12px;
   }
-
+  
+  .empower-title::after {
+    width: 50px;
+  }
+  
+  .empower-lead { 
+    font-size: 17px; 
+    margin-bottom: 24px;
+  }
+  
+  .empower-rail p { 
+    font-size: 16px; 
+    line-height: 1.7; 
+  }
+  
+  .empower-card { 
+    padding: 24px; 
+    margin: 28px 0; 
+  }
+  
+  .empower-cardTitle {
+    font-size: 20px;
+  }
+  
+  .empower-image { 
+    height: 260px; 
+  }
+  
+  .empower-quote {
+    padding: 28px 24px 28px 48px;
+    font-size: 17px;
+  }
+  
   .empower-quote::before {
-    left: 12px;
-    top: 4px;
+    left: 16px;
+    top: 14px;
     font-size: 56px;
   }
-
-  .empower-list li { font-size: 16px; }
+  
+  .empower-list li { 
+    font-size: 17px; 
+    padding-left: 32px;
+  }
+  
+  .empower-list li::before {
+    left: 8px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .empower-miniStat {
+    grid-template-columns: 48px minmax(0, 1fr);
+    padding: 12px;
+  }
+  
+  .empower-miniNum {
+    font-size: 22px;
+  }
+  
+  .empower-chip {
+    padding: 10px 14px;
+    font-size: 12.5px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -426,14 +913,92 @@
     padding-right: 4vw;
   }
 
-  .empower-section { padding: 78px 0; }
+  .empower-section { 
+    padding: 70px 0; 
+  }
 
-  .empower-image { height: 240px; }
+  .empower-image { 
+    height: 240px; 
+  }
 
-  .empower-card { padding: 18px; margin: 26px 0; }
+  .empower-card { 
+    padding: 22px; 
+    margin: 24px 0; 
+  }
+  
+  .empower-cardTitle {
+    font-size: 19px;
+  }
+  
+  .empower-quote { 
+    padding: 24px 20px 24px 40px; 
+    font-size: 16px;
+  }
+  
+  .empower-quote::before { 
+    font-size: 48px; 
+  }
+  
+  .empower-eyebrow {
+    font-size: 12px;
+    padding: 7px 16px;
+  }
+  
+  .empower-affirm {
+    padding: 20px 22px;
+    margin-top: 24px;
+  }
+  
+  .empower-affirm p {
+    font-size: 16px;
+  }
+  
+  .empower-cta {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
 
-  .empower-quote { padding: 20px 16px 20px 36px; }
-  .empower-quote::before { font-size: 48px; }
+@media (max-width: 400px) {
+  .empower-shell {
+    padding-left: 3.5vw;
+    padding-right: 3.5vw;
+  }
+
+  .empower-title { 
+    font-size: 26px; 
+  }
+  
+  .empower-lead {
+    font-size: 16px;
+  }
+  
+  .empower-image { 
+    height: 220px; 
+  }
+  
+  .empower-infoCard {
+    padding: 20px;
+  }
+  
+  .empower-infoTitle {
+    font-size: 20px;
+  }
+  
+  .empower-list li {
+    font-size: 16px;
+    padding-left: 30px;
+  }
+  
+  .empower-quote {
+    padding: 20px 18px 20px 36px;
+  }
+  
+  .empower-quote::before {
+    left: 14px;
+    top: 12px;
+    font-size: 42px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -442,6 +1007,160 @@
     padding-right: 3.5vw;
   }
 
-  .empower-title { font-size: 24px; }
-  .empower-image { height: 210px; }
+  .empower-title { 
+    font-size: 24px; 
+  }
+  
+  .empower-image { 
+    height: 200px; 
+  }
+  
+  .empower-card {
+    padding: 20px;
+  }
+  
+  .empower-quote {
+    padding: 18px 16px 18px 32px;
+  }
+  
+  .empower-quote::before {
+    font-size: 38px;
+    left: 12px;
+    top: 10px;
+  }
+  
+  .empower-miniStat {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+  
+  .empower-miniNum {
+    font-size: 20px;
+  }
+}
+
+/* Animation adjustments for responsive */
+@media (max-width: 768px) {
+  .scroll-animate .empower-card,
+  .scroll-animate .empower-mediaCard,
+  .scroll-animate .empower-infoCard,
+  .scroll-animate .empower-miniStat,
+  .scroll-animate .empower-quote {
+    animation-duration: 0.8s;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-animate .empower-card,
+  .scroll-animate .empower-mediaCard,
+  .scroll-animate .empower-infoCard,
+  .scroll-animate .empower-miniStat,
+  .scroll-animate .empower-quote {
+    animation-duration: 0.7s;
+  }
+}
+
+/* Print optimization */
+@media print {
+  .apex-empower {
+    background: white !important;
+  }
+  
+  .empower-mediaCard,
+  .empower-infoCard,
+  .empower-card,
+  .empower-miniStat,
+  .empower-affirm {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  .empower-title,
+  .empower-infoTitle,
+  .empower-cardTitle,
+  .empower-miniNum,
+  .empower-affirm p,
+  .empower-cta {
+    color: black !important;
+  }
+  
+  .empower-lead,
+  .empower-rail p,
+  .empower-list li,
+  .empower-miniLabel,
+  .empower-quote,
+  .empower-chip {
+    color: #333 !important;
+  }
+  
+  .empower-image::before {
+    display: none;
+  }
+  
+  /* Disable animations for print */
+  .scroll-animate .empower-card,
+  .scroll-animate .empower-mediaCard,
+  .scroll-animate .empower-infoCard,
+  .scroll-animate .empower-miniStat,
+  .scroll-animate .empower-quote,
+  .scroll-animate .empower-chip,
+  .scroll-animate .empower-affirm,
+  .scroll-animate .empower-eyebrow,
+  .scroll-animate .empower-title,
+  .scroll-animate .empower-lead,
+  .scroll-animate .empower-list li {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* High DPI optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .apex-empower {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+  
+  .empower-mediaCard,
+  .empower-infoCard,
+  .empower-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .empower-list li::before {
+    background: linear-gradient(180deg, rgba(74, 132, 197, 1), rgba(30, 58, 95, 1));
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate .empower-card,
+  .scroll-animate .empower-mediaCard,
+  .scroll-animate .empower-infoCard,
+  .scroll-animate .empower-miniStat,
+  .scroll-animate .empower-quote,
+  .scroll-animate .empower-chip,
+  .scroll-animate .empower-affirm,
+  .scroll-animate .empower-eyebrow,
+  .scroll-animate .empower-title,
+  .scroll-animate .empower-lead,
+  .scroll-animate .empower-list li {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .empower-mediaCard:hover,
+  .empower-infoCard:hover,
+  .empower-card:hover,
+  .empower-miniStat:hover,
+  .empower-chip:hover,
+  .empower-affirm:hover,
+  .empower-cta:hover,
+  .empower-mediaCard:hover .empower-image img {
+    transition: none !important;
+    transform: none !important;
+  }
 }

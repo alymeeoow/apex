@@ -29,7 +29,7 @@ export default function EmpowermentHero() {
 
       <div className="apex-hero-inner">
         <h1 className="apex-hero-title">
-          Empowering Women in Logistics
+          Empowering Diversity  in Logistics
         </h1>
 
         <p className="apex-hero-subtitle">

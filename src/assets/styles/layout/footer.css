@@ -6,10 +6,14 @@
 ================================ */
 .apex-footer {
   position: relative;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: linear-gradient(180deg, #03193d 0%, #020f26 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 /* ================================
@@ -65,13 +69,13 @@
   position: relative;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 56px 24px 18px;
+  padding: 64px 24px 22px;
 }
 
 .apex-footer-top {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 36px;
+  gap: 44px;
 }
 
 /* ================================
@@ -88,35 +92,27 @@
   text-decoration: none;
 }
 
-
 .apex-footer-brandRow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; 
+  gap: 8px;
 }
 
 .apex-footer-logo {
   margin-right: 50px;
   width: clamp(84px, 7vw, 120px);
   flex-shrink: 0;
- 
 }
 
 .apex-footer-word {
   width: clamp(220px, 22vw, 420px);
   max-width: calc(100vw - 140px);
   height: auto;
-
   margin: 0;
   margin-left: 40px;
-
   filter: brightness(0) invert(1);
-
- 
 }
-
-
 
 @media (min-width: 981px) {
   .apex-footer-word {
@@ -125,73 +121,149 @@
   }
 }
 
+/* Enhanced Tagline */
 .apex-footer-tagline {
-  margin-top: 14px;
+  margin-top: 18px;
   max-width: 420px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ================================
    LINKS
 ================================ */
+/* Enhanced Column Title */
 .apex-footer-colTitle {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .apex-footer-links {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* Enhanced Links */
 .apex-footer-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.apex-footer-link:hover {
+  color: #ffffff;
+  transform: translateX(3px);
 }
 
 .apex-footer-link.is-active {
   color: #fff;
+  font-weight: 600;
 }
 
 /* ================================
    BOTTOM
 ================================ */
 .apex-footer-divider {
-  margin: 32px 0 16px;
+  margin: 40px 0 20px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .apex-footer-bottom {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
 }
 
-.apex-footer-copy,
+/* Enhanced Copyright */
+.apex-footer-copy {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Mini Links */
 .apex-footer-miniLink {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.apex-footer-miniLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .apex-footer-miniLinks {
   display: flex;
-  gap: 14px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 /* ================================
-   MOBILE (tight logos)
+   RESPONSIVE
 ================================ */
+@media (max-width: 1100px) {
+  .apex-footer-top {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 36px;
+  }
+  
+  .apex-footer-links {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .apex-footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .apex-footer-inner {
+    padding: 56px 24px 20px;
+  }
+  
+  .apex-footer-brandBlock {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .apex-footer-tagline {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14.5px;
+  }
+  
+  .apex-footer-divider {
+    margin: 36px 0 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .apex-footer-top {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 32px;
   }
 
   .apex-footer-brand {
@@ -199,42 +271,184 @@
     justify-content: center;
   }
 
-
   .apex-footer-brandRow {
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-left: 70px;
-    gap: 6px;             
-    flex-wrap: nowrap;    
+    gap: 6px;
+    flex-wrap: nowrap;
   }
-
 
   .apex-footer-word {
     margin: 0 !important;
-    width: clamp(180px, 65vw, 260px); 
+    width: clamp(180px, 65vw, 260px);
     max-width: 90vw;
   }
 
   .apex-footer-logo {
     margin-right: -80px;
-    width: 56px;
+    width: 60px;
   }
 
   .apex-footer-tagline {
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  
+  .apex-footer-colTitle {
+    font-size: 12.5px;
+    margin-bottom: 16px;
+  }
+  
+  .apex-footer-link {
+    font-size: 14.5px;
   }
 
   .apex-footer-bottom {
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
     text-align: center;
     align-items: center;
   }
 
   .apex-footer-miniLinks {
     justify-content: center;
+    gap: 16px;
+  }
+  
+  .apex-footer-copy,
+  .apex-footer-miniLink {
+    font-size: 12.5px;
+  }
+  
+  .apex-footer-inner {
+    padding: 48px 20px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .apex-footer-inner {
+    padding: 40px 16px 16px;
+  }
+  
+  .apex-footer-top {
+    gap: 28px;
+  }
+  
+  .apex-footer-brandRow {
+    margin-left: 60px;
+  }
+  
+  .apex-footer-logo {
+    width: 56px;
+  }
+  
+  .apex-footer-word {
+    width: clamp(160px, 60vw, 240px);
+  }
+  
+  .apex-footer-tagline {
+    font-size: 13.5px;
+    padding: 0 10px;
+  }
+  
+  .apex-footer-divider {
+    margin: 32px 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .apex-footer-inner {
+    padding: 36px 14px 14px;
+  }
+  
+  .apex-footer-top {
+    gap: 24px;
+  }
+  
+  .apex-footer-brandRow {
+    margin-left: 50px;
+  }
+  
+  .apex-footer-logo {
+    width: 52px;
+    margin-right: -70px;
+  }
+  
+  .apex-footer-word {
+    width: clamp(140px, 55vw, 220px);
+  }
+  
+  .apex-footer-tagline {
+    font-size: 13px;
+  }
+  
+  .apex-footer-colTitle {
+    font-size: 12px;
+  }
+  
+  .apex-footer-link {
+    font-size: 14px;
+  }
+  
+  .apex-footer-copy,
+  .apex-footer-miniLink {
+    font-size: 12px;
+  }
+  
+  .apex-footer-miniLinks {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .apex-footer-inner {
+    padding: 32px 12px 12px;
+  }
+  
+  .apex-footer-logo {
+    width: 48px;
+  }
+  
+  .apex-footer-word {
+    width: clamp(130px, 50vw, 200px);
+  }
+  
+  .apex-footer-brandRow {
+    margin-left: 40px;
+    gap: 4px;
+  }
+  
+  .apex-footer-tagline {
+    font-size: 12.5px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .apex-footer {
+    background: white !important;
+    border-top: 1px solid #ddd !important;
+  }
+  
+  .apex-footer-scene,
+  .apex-footer-horizon,
+  .apex-footer-ocean {
+    display: none !important;
+  }
+  
+  .apex-footer-tagline,
+  .apex-footer-copy,
+  .apex-footer-miniLink,
+  .apex-footer-colTitle,
+  .apex-footer-link {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+  
+  .apex-footer-word {
+    filter: none !important;
   }
 }

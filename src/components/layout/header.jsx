@@ -119,6 +119,10 @@ export default function Header() {
               <NavLink to="/empowerment" className={empowerClass}>
                 EMPOWERMENT
               </NavLink>
+
+              {/* <NavLink to="/fund" className={empowerClass}>
+                FUND RAISING
+              </NavLink> */}
             </nav>
           </div>
 
@@ -179,8 +183,9 @@ export default function Header() {
               CONTACT
             </NavLink>
             <NavLink to="/faq" className="apex-mobile-link">
-              FAQ
+    FAQ
             </NavLink>
+            
 
             <div className="apex-mobile-sep" aria-hidden="true" />
 
@@ -190,6 +195,10 @@ export default function Header() {
             >
               EMPOWERMENT
             </NavLink>
+            
+
+
+            
           </nav>
         </aside>
       </div>

@@ -52,22 +52,18 @@
   opacity: 0.9;
 }
 
-
 .apex-header-ocean {
   position: absolute;
   left: -10%;
   right: -10%;
   bottom: -30px;
   height: 90px;
-
-  /* your base ocean fill */
   background: linear-gradient(
     180deg,
     rgba(74, 132, 197, 0.20) 0%,
     rgba(47, 95, 158, 0.22) 50%,
     rgba(7, 33, 69, 0.16) 100%
   );
-
   clip-path: polygon(
     0% 45%,
     8% 55%,
@@ -86,20 +82,13 @@
     100% 100%,
     0% 100%
   );
-
-  /* IMPORTANT for pseudo-element animation */
   overflow: hidden;
   transform: translateZ(0);
   will-change: transform;
-
-  /* optional: keep this tiny or remove it */
   filter: blur(0.15px);
-
-  /* gentle up/down swell */
   animation: apex-ocean-swell 4s ease-in-out infinite;
 }
 
-/* moving wave shimmer layer */
 .apex-header-ocean::before {
   content: "";
   position: absolute;
@@ -107,8 +96,6 @@
   left: -60%;
   width: 220%;
   height: 100%;
-
-  /* visible wave streaks */
   background: repeating-linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.22) 0px,
@@ -117,11 +104,8 @@
     rgba(255, 255, 255, 0.14) 70px,
     rgba(255, 255, 255, 0.00) 110px
   );
-
   opacity: 0.40;
   mix-blend-mode: overlay;
-
-  /* THIS is the motion (more reliable than background-position) */
   animation: apex-ocean-drift 6s linear infinite;
   will-change: transform;
   transform: translateX(0);
@@ -137,7 +121,6 @@
   50%  { transform: translateY(2px) translateZ(0); }
   100% { transform: translateY(0) translateZ(0); }
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .apex-header-ocean,
@@ -163,11 +146,9 @@
 .apex-header-inner {
   position: relative;
   z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 12px 24px;
   height: 90px;
   max-width: 1300px;
@@ -204,7 +185,7 @@
 .apex-header-navWrap {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .apex-header-nav {
@@ -220,18 +201,19 @@
 }
 
 .apex-header-nav--right {
-  gap: 0;
+  gap: 28px;
 }
 
 .apex-header-link {
   position: relative;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: #012145;
   text-decoration: none;
   padding: 6px 2px;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .apex-header-link::after {
@@ -265,8 +247,9 @@
 }
 
 .apex-header-link--empower {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  color: #0a2459;
 }
 
 .apex-header-actions {
@@ -281,7 +264,6 @@
   height: 44px;
   background-color: transparent;
   border: none;
-
   cursor: pointer;
   place-items: center;
   padding: 0;
@@ -427,7 +409,8 @@
 }
 
 .apex-mobile-link--empower {
-  font-weight: 800;
+  font-weight: 700;
+  color: #0a2459;
 }
 
 .apex-mobile-sep {
