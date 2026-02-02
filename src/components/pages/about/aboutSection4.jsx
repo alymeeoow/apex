@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import VAPhoto from "../../../assets/images/about/monique-dancel.png"; 
+import VAPhoto from "../../../assets/images/about/monique-dancel.jpg"; 
 
 export default function AboutSection4() {
   const sectionRef = useRef(null);
