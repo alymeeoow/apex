@@ -7,7 +7,7 @@ import EmpowermentHero from "./empowermentHero";
 import EmpowermentImg1 from "../../../assets/images/home/empowerment.jpg";
 import EmpowermentImg2 from "../../../assets/images/home/eileen-choose.jpg";
 import EmpowermentImgChildren from "../../../assets/images/home/move-for-hunger.jpg";
-// Add import for the new image (you'll need to add the actual image file)
+
 import StratosphereJumpImg from "../../../assets/images/home/stratosphere-jump.jpg";
 
 export default function Empowerment() {
@@ -90,23 +90,20 @@ export default function Empowerment() {
                     
                     <div className="empower-goalProgress">
                       <div className="empower-progressBar">
-                        <div className="empower-progressFill" style={{ width: '45%' }}></div>
+                        <div className="empower-progressFill" style={{ width: '100%' }}></div>
                       </div>
-                      <div className="empower-progressStats">
-                        <span className="empower-progressCurrent">2,250 meals</span>
-                        <span className="empower-progressPercent">45% of goal</span>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="empower-card empower-card--accent">
-                <p className="empower-quote">
+           
+                <p className="empower-quote"  style={{ marginTop:'60px' }}>
                   "Our industry moves food, goods, and essentials around the world every day. 
                   Supporting this cause feels like a responsibility, not just an opportunity."
                 </p>
-              </div>
+       
             </aside>
 
             {/* RIGHT */}
@@ -133,18 +130,7 @@ export default function Empowerment() {
                   </p>
                 </div>
 
-                <div className="empower-card">
-                  <h3 className="empower-cardTitle">Why This Matters</h3>
-                  
-                  <ul className="empower-list">
-                    <li><strong>Direct Impact:</strong> Every $1 provides up to 10 meals for families in need</li>
-                    <li><strong>Industry Responsibility:</strong> As supply chain professionals, we have a unique opportunity to address food insecurity</li>
-                    <li><strong>Community Focus:</strong> Funds support local food banks and community programs</li>
-                    <li><strong>Sustainable Change:</strong> Building systems to address hunger long-term</li>
-                  </ul>
-                </div>
-
-                <div className="empower-card empower-card--cta">
+                   <div className="empower-card empower-card--cta">
                   <h3 className="empower-cardTitle">Join the Movement</h3>
                   
                   <p>
@@ -155,7 +141,7 @@ export default function Empowerment() {
                   
                   <div className="empower-actions">
                     <a 
-                      href="https://moveforhunger.org" 
+                      href="https://donate.moveforhunger.org/fundraiser/6921838" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="empower-button empower-button--primary"
@@ -165,35 +151,30 @@ export default function Empowerment() {
                     </a>
                     
                     <a 
-                      href="#share" 
+                      href="https://www.linkedin.com/posts/eileen-dabrowski-a090a7141_far-too-many-people-go-to-bed-hungry-every-activity-7423753985641050112-_v-I" 
                       className="empower-button empower-button--secondary"
+                             target="_blank" 
+
+                          rel="noopener noreferrer"
                     >
                       <span>Share & Spread Awareness</span>
                     </a>
                   </div>
                   
-                  <div className="empower-note">
-                    <p>
-                      <small>
-                        All donations go directly to Move For Hunger, a 501(c)(3) nonprofit organization. 
-                        Tax ID: 27-1917818
-                      </small>
-                    </p>
-                  </div>
+                 
                 </div>
 
-                <div className="empower-card empower-card--soft">
-                  <p>
-                    <strong>Event Details:</strong> Manifest: The Future of Supply Chain & Logistics<br />
-                    <strong>Location:</strong> The Stratosphere, Las Vegas<br />
-                    <strong>Date:</strong> April 15-17, 2024<br />
-                    <strong>Jump Height:</strong> 829 feet (253 meters)
-                  </p>
-                </div>
+
+           
+               
               </div>
+              
             </div>
+            
           </div>
+          
         </div>
+        
       </section>
 
       {/* SECTION 1 - GIVING BACK (ORIGINAL, NOW SECTION 1) */}
@@ -358,7 +339,9 @@ export default function Empowerment() {
                   </ul>
                 </div>
 
-                <div className="empower-card empower-card--accent">
+                <div className="empower-card empower-card--accent"
+                
+              style={{ marginTop:'110px' }}>
                   <p>
                     Eileen Dabrowski empowers women not by standing in front of them,
                     but by standing beside them, opening doors, and making sure no one walks the
