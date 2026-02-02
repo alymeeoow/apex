@@ -257,7 +257,7 @@ canvas {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #1E40AF;
+
   margin-bottom: clamp(10px, 1.2vw, 12px);
   display: inline-block;
   padding: 6px 14px;

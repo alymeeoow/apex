@@ -422,23 +422,22 @@
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Enhanced Eyebrow */
+
 .empower-eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.22em;
+  font-size: clamp(12px, 1.1vw, 14px);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  font-weight: 800;
-  color: #1E40AF;
-  margin-bottom: 16px;
+  font-weight: 700;
+
+  margin-bottom: clamp(10px, 1.2vw, 12px);
   display: inline-block;
-  padding: 8px 18px;
-  background: rgba(30, 64, 175, 0.1);
+  padding: 6px 14px;
+  background: rgba(30, 64, 175, 0.08);
   border-radius: 20px;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
 }
 
-/* Enhanced Title */
+
 .empower-title {
   font-size: clamp(36px, 3.2vw, 52px);
   font-weight: 900;
@@ -463,7 +462,7 @@
   box-shadow: 0 8px 24px rgba(74, 132, 197, 0.3);
 }
 
-/* Enhanced Lead Text */
+
 .empower-lead {
   font-size: 20px;
   line-height: 1.8;
@@ -475,7 +474,6 @@
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Enhanced Paragraphs */
 .empower-rail p {
   font-size: 18px;
   line-height: 1.8;
@@ -662,7 +660,370 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Styles */
+/* Campaign Goal Styles */
+.empower-goalMeter {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(30, 58, 95, 0.15);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s var(--ease);
+}
+
+.empower-goalMeter:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(30, 58, 95, 0.12);
+  border-color: rgba(30, 58, 95, 0.25);
+}
+
+.empower-goalTarget {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.empower-goalNumber {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(74, 132, 197, 0.2);
+}
+
+.empower-goalLabel {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.empower-goalProgress {
+  width: 100%;
+}
+
+.empower-progressBar {
+  height: 12px;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.empower-progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(74, 132, 197, 0.3);
+  transition: width 0.8s var(--ease);
+}
+
+.empower-progressStats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.empower-progressCurrent {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.empower-progressCurrent::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: inline-block;
+}
+
+.empower-progressPercent {
+  color: var(--muted);
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.05);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* Animation for the goal meter when it enters view */
+.scroll-animate .empower-goalMeter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: fadeSlideUpGoal 0.8s var(--ease) 0.4s forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-goalNumber {
+  opacity: 0;
+  animation: countUp 1.2s var(--ease) 0.6s forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-progressFill {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progressFillIn 1s var(--ease) 0.8s forwards;
+  animation-play-state: paused;
+}
+
+.scroll-animate .empower-goalMeter,
+.scroll-animate .empower-goalNumber,
+.scroll-animate .empower-progressFill {
+  animation-play-state: running;
+}
+/* Button Container */
+.empower-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Base Button Styles */
+.empower-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s var(--ease);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Primary Button */
+.empower-button--primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.2);
+}
+
+.empower-button--primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(30, 58, 95, 0.3);
+}
+
+.empower-button--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.2);
+}
+
+/* Secondary Button */
+.empower-button--secondary {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.empower-button--secondary:hover {
+  background: rgba(30, 58, 95, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.1);
+}
+
+.empower-button--secondary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Button Icon */
+.empower-buttonIcon {
+  font-size: 1.1rem;
+  transition: transform 0.3s var(--ease);
+}
+
+.empower-button:hover .empower-buttonIcon {
+  transform: translateX(2px);
+}
+
+/* Focus States */
+.empower-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 132, 197, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .empower-actions {
+    flex-direction: row;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .empower-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .empower-button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .empower-buttonIcon {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .empower-actions {
+    gap: 0.5rem;
+  }
+  
+  .empower-button {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8rem;
+  }
+  
+  .empower-buttonIcon {
+    font-size: 0.9rem;
+    margin-left: 0.25rem;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .empower-button {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .empower-buttonIcon {
+    font-size: 0.85rem;
+  }
+}
+
+/* Disabled State */
+.empower-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Print optimization */
+@media print {
+  .empower-button {
+    display: none;
+  }
+}
+@keyframes fadeSlideUpGoal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes countUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressFillIn {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .empower-goalNumber {
+    font-size: 36px;
+  }
+  
+  .empower-goalLabel {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .empower-goalTarget {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .empower-goalNumber {
+    font-size: 32px;
+  }
+  
+  .empower-goalLabel {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .empower-goalMeter {
+    padding: 20px;
+  }
+  
+  .empower-goalNumber {
+    font-size: 28px;
+  }
+  
+  .empower-progressStats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .empower-goalMeter {
+    padding: 18px;
+  }
+  
+  .empower-goalNumber {
+    font-size: 24px;
+  }
+  
+  .empower-progressBar {
+    height: 10px;
+  }
+}
+
+
+
 @media (max-width: 1200px) {
   .empower-left {
     grid-column: 1 / span 4;
