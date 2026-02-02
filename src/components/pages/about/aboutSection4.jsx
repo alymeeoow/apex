@@ -55,7 +55,8 @@ export default function AboutSection4() {
 
   const adminItems = [
     "Manages calendars and coordinates meetings",
-    "Handles email communications and prioritization",
+    "Professionalism and reliability",
+    "Adaptability in fast-paced environments",
     "Ensures nothing falls through the cracks"
   ];
 
@@ -72,9 +73,9 @@ export default function AboutSection4() {
   ];
 
   const miniStats = [
-    { number: "6", label: "Months On Board" },
-    { number: "40+", label: "Hours per Week" },
-    { number: "98%", label: "Client Satisfaction" }
+    { number: "1.", label: "License Professional Teacher" },
+    { number: "2.", label: "Graphic Designer" },
+    { number: "3.", label: "Administrative Support Specialist " }
   ];
 
   const statItems = [
@@ -105,7 +106,7 @@ export default function AboutSection4() {
 
               <div className={`about-infoCard ${inView ? 'scroll-animate animated delay-200' : 'scroll-animate'}`}>
                 <div className="about-infoTitle">Meet Monique Dancel</div>
-                <div className="about-infoKicker">Virtual Assistant</div>
+                <div className="about-infoKicker">Executive Assistant Specialist</div>
                 
                 <div className="about-miniStats">
                   {miniStats.map((stat, index) => (
@@ -123,7 +124,12 @@ export default function AboutSection4() {
             </div>
 
             {/* BIO CARD */}
-            <div className={`about-card about-card--soft ${inView ? 'scroll-animate animated delay-400' : 'scroll-animate'}`}>
+            <div className={`about-card about-card--soft ${inView ? 'scroll-animate animated delay-400' : 'scroll-animate'}`}
+
+             style={{ marginTop: '80px' }}>
+             
+             
+             
               <h3 className="about-cardTitle">About Monique</h3>
               <p>
                 Monique Dancel brings exceptional organizational skills and attention to detail 
@@ -132,24 +138,11 @@ export default function AboutSection4() {
               </p>
             </div>
 
-            {/* SKILLS CARD */}
-            <div className={`about-card ${inView ? 'scroll-animate animated delay-500' : 'scroll-animate'}`}>
-              <h3 className="about-cardTitle">Key Skills & Expertise</h3>
-              <ul className="about-list">
-                {skillsList.map((skill, index) => (
-                  <li 
-                    key={index}
-                    className={inView ? `animated delay-${500 + index * 100}` : ''}
-                  >
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
+           
 
-            {/* MOTTO CARD */}
+         
             <div className={`about-card about-card--accent ${inView ? 'scroll-animate animated delay-700' : 'scroll-animate'}`} 
-                 style={{ marginBottom: '-20px' }}>
+                 style={{ marginTop: '160px' }}>
               <p className="about-eyebrow">Personal Motto</p>
               <h3 className="about-cardTitle">"Amplifying Excellence, Always"</h3>
               <p>
@@ -157,12 +150,14 @@ export default function AboutSection4() {
                 client interaction is handled with precision and care.
               </p>
             </div>
+
+            
           </aside>
 
-          {/* RIGHT */}
+
           <div className="about-right">
             <div className="about-rail">
-              <p className={`about-eyebrow ${inView ? 'animate-fade-up animated' : 'animate-init'}`}>Virtual Assistant</p>
+              <p className={`about-eyebrow ${inView ? 'animate-fade-up animated' : 'animate-init'}`}>Executive Assistant Specialist</p>
               <h2 className={`about-title ${inView ? 'animate-fade-up animated delay-100' : 'animate-init'}`}>
                 Extending Our Capabilities with Monique
               </h2>
@@ -212,20 +207,7 @@ export default function AboutSection4() {
                   </ul>
                 </div>
 
-                <div className={`about-card about-card--soft ${inView ? 'scroll-animate animated delay-700' : 'scroll-animate'}`} 
-                     style={{ margin: '24px 0' }}>
-                  <h4 className="about-cardTitle">Client Coordination</h4>
-                  <ul className="about-list">
-                    {clientCoordItems.map((item, index) => (
-                      <li 
-                        key={index}
-                        className={inView ? `animated delay-${700 + index * 100}` : ''}
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+           
 
                 <div className={`about-card about-card--soft ${inView ? 'scroll-animate animated delay-800' : 'scroll-animate'}`} 
                      style={{ margin: '24px 0' }}>
@@ -243,15 +225,7 @@ export default function AboutSection4() {
                 </div>
               </div>
 
-              <div className={`about-quote ${inView ? 'scroll-animate animated delay-900' : 'scroll-animate'}`} 
-                   style={{ marginTop: '50px' }}>
-                "Monique isn't just support staff—she's an integral part of our client 
-                service team. She ensures we can maintain our personal touch while scaling 
-                our impact across the supply chain industry."
-                <div style={{ marginTop: '30px', fontSize: '14px', fontWeight: '600' }}>
-                  — Eileen Dabrowski, Founder & Principal
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
