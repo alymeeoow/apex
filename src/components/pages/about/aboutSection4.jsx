@@ -73,7 +73,7 @@ export default function AboutSection4() {
   ];
 
   const miniStats = [
-    { number: "1.", label: "License Professional Teacher" },
+    { number: "1.", label: "Licensed Professional Teacher" },
     { number: "2.", label: "Graphic Designer" },
     { number: "3.", label: "Administrative Support Specialist " }
   ];
@@ -142,7 +142,7 @@ export default function AboutSection4() {
 
          
             <div className={`about-card about-card--accent ${inView ? 'scroll-animate animated delay-700' : 'scroll-animate'}`} 
-                 style={{ marginTop: '160px' }}>
+                 style={{ marginTop: '100px' }}>
               <p className="about-eyebrow">Personal Motto</p>
               <h3 className="about-cardTitle">"Amplifying Excellence, Always"</h3>
               <p>
@@ -159,7 +159,7 @@ export default function AboutSection4() {
             <div className="about-rail">
               <p className={`about-eyebrow ${inView ? 'animate-fade-up animated' : 'animate-init'}`}>Executive Assistant Specialist</p>
               <h2 className={`about-title ${inView ? 'animate-fade-up animated delay-100' : 'animate-init'}`}>
-                Extending Our Capabilities with Monique
+                Amplifying Our Capabilities
               </h2>
 
               <div className={`about-card about-card--accent1 ${inView ? 'scroll-animate animated delay-200' : 'scroll-animate'}`} 
