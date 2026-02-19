@@ -1,4 +1,4 @@
-// Section6.jsx
+
 import React from "react";
 import ExecSumLadies from "../../../assets/images/home/exec-sum-ladies.jpg";
 
@@ -29,7 +29,7 @@ export default function Section6() {
               </p>
 
               <p>
-                Her work ensures that women aren’t just invited into logistics — they’re equipped to
+                Her work ensures that women aren’t just invited into logistics they’re equipped to
                 excel within it. Through Apex Tide Consulting, she advocates for continuous learning,
                 skill-building, and leadership development, especially for women who may not have
                 traditionally been offered those opportunities.

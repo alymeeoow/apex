@@ -195,7 +195,7 @@ export default function Services() {
 
               <p className={`svc-lead ${heroInView ? 'svc-animated' : ''}`}
                  style={{ animationDelay: '200ms' }}>
-                Clear offerings, built for logistics teams. Pick a lane, mix what you need, and ship outcomes—without noise.
+                Clear offerings, built for logistics teams. Pick a lane, mix what you need, and ship outcomes without noise.
               </p>
 
               <div className="svc-heroBadges">
@@ -271,7 +271,7 @@ export default function Services() {
               <div className="svc-kicker">Speaking Engagement</div>
               <h2 className="svc-h2">High-signal sessions that don't waste the room.</h2>
               <p className="svc-p">
-                Built for logistics audiences—direct, practical, and tailored to the format. Use it to align leaders, sharpen teams, and move decisions forward.
+                Built for logistics audiences direct, practical, and tailored to the format. Use it to align leaders, sharpen teams, and move decisions forward.
               </p>
 
               <div className="svc-chipList">
@@ -320,7 +320,7 @@ export default function Services() {
                 <h2 className="svc-h2 svc-h2--light">Curriculum that teams can run without you.</h2>
               </div>
               <p className="svc-courseLead">
-                Built as modular tracks so companies can onboard, reinforce, and measure performance—without creating "training theater."
+                Built as modular tracks so companies can onboard, reinforce, and measure performance without creating "training theater."
               </p>
             </div>
 

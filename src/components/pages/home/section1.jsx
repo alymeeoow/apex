@@ -29,8 +29,8 @@ export default function Section1() {
 
               <p>
                 When I stepped into entrepreneurship, I didn&apos;t do it with a safety net. I
-                did it with faith, a ridiculously strong work ethic, and the belief that
-                our industry deserved better leadership, better training, and better
+                did it with faith, a ridiculously strong work ethic
+                and the belief that our industry deserved better leadership, better training, and better
                 support. But what truly made this possible wasn&apos;t the idea, it was you.
               </p>
 

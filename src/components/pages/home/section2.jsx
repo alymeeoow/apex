@@ -46,26 +46,20 @@ export default function Section2() {
           </div>
         </div>
 
-        {/* ✅ AFTER: FULL WIDTH (no blank right space) */}
+ 
         <div className="apex-after apex-after-wide">
           <div className="apex-after-col">
             <div className="apex-text">
               <p className="apex-eyebrow">Recognition</p>
               <h3 className="apex-subtitle">Empowering Women into Logistics Award</h3>
 
-              <p>
-                This is an award my spouse submitted about me: If you had asked Eileen
-                Dabrowski (my Wife) at the beginning of her career whether she would one
-                day, be recognized for empowering women in logistics, she likely would
-                have laughed, then asked what problem needed solving.
-              </p>
+             <p>
+  If you had asked Eileen Dabrowski at the beginning of her career whether she would one day be recognized for empowering women in logistics, she likely would have redirected the conversation to the work itself, and to the challenges that needed solving.
+</p>
 
-              <p>
-                Eileen doesnt enter spaces to &quot;fit in.&quot; She enters them to build ladders,
-                remove barriers, and make sure the next woman who walks through the door
-                doesn&apos;t have to wonder if she belongs there, because it&apos;s already clear
-                that she does.
-              </p>
+<p>
+  Eileen does not enter spaces to "fit in." She enters them to build ladders, remove barriers, and ensure that the next woman who walks through the door does not have to wonder whether she belongs there, because it is already clear that she does.
+</p>
             </div>
           </div>
         </div>

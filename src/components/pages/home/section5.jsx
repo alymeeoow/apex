@@ -36,7 +36,7 @@ export default function Section5() {
 
               <p>
                 By embodying confidence, clarity, and integrity, Eileen shows other women that
-                leadership doesn’t require fitting a mold — it requires conviction.
+                leadership doesn’t require fitting a mold  it requires conviction.
               </p>
             </div>
           </div>

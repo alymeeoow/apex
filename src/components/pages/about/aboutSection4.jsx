@@ -166,7 +166,7 @@ export default function AboutSection4() {
                    style={{ marginTop: '20px' }}>
                 <p>
                   As Apex Tide Consulting continues to grow, we've strategically expanded 
-                  our team by onboarding Monique Dancel as our full-time Virtual Assistant—a 
+                  our team by onboarding Monique Dancel as our full-time Virtual Assistant , a 
                   move that has dramatically increased our capacity to serve clients effectively.
                 </p>
               </div>
