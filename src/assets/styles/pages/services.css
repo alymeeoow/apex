@@ -373,7 +373,7 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
-  hyphens: auto;
+
   overflow-wrap: break-word;
 }
 .svc-p--center { 

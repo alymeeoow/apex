@@ -332,7 +332,7 @@ export default function Empowerment() {
 
                   <ul className="empower-list">
                     <li>Making leadership education accessible and relevant</li>
-                    <li>Creating systems that support advancement—not just entry</li>
+                    <li>Creating systems that support advancement, not just entry</li>
                     <li>Mentoring, sponsoring, and advocating for women consistently</li>
                     <li>Teaching communication, confidence, and strategic thinking</li>
                     <li>Normalizing women's leadership in professional spaces</li>
@@ -391,9 +391,9 @@ export default function Empowerment() {
                 </div>
               </div>
               <div className="empower-card empower-card--accent1">
-                <p>That is leadership.</p>
-                <p>That is impact.</p>
-                <p>And that is why she deserves recognition for empowering women.</p>
+                <p >That is  <span className="bold">leadership</span>.</p>
+                <p >That is   <span className="bold">impact</span>.</p>
+                <p>And that is why she deserves recognition for <span className="bold">empowering women</span>.</p>
               </div>
             </aside>
 
@@ -413,7 +413,7 @@ export default function Empowerment() {
                   <p>
                     She would amplify visibility for women leaders, expand scholarship and
                     mentorship programs, and continue building education pathways that help women
-                    enter, stay, and rise in their careers. This recognition would not mark a finish line —
+                    enter, stay, and rise in their careers. This recognition would not mark a finish line 
                     it would fuel the next phase of impact.
                   </p>
                 </div>

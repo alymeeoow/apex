@@ -211,7 +211,7 @@ canvas {
   letter-spacing: -0.015em;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  hyphens: auto;
+
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 

@@ -135,7 +135,7 @@ export default function AboutSection2() {
                 <p>
                   Eileen is widely recognized as a connector and advocate within the supply
                   chain community. She has championed mentorship programs, scholarship
-                  initiatives, and inclusive leadership platforms—particularly for women and
+                  initiatives, and inclusive leadership platforms, particularly for women and
                   emerging leaders in logistics.
                 </p>
               </div>
@@ -156,7 +156,7 @@ export default function AboutSection2() {
               <div className={`about-card about-card--accent1 ${inView ? 'scroll-animate animated delay-600' : 'scroll-animate'}`}>
                 <p>
                   The result of Eileen's leadership is not just stronger programs or better
-                  companies—it is a more prepared, more confident, and more connected supply
+                  companies, it is a more prepared, more confident, and more connected supply
                   chain workforce.
                 </p>
               </div>
@@ -167,7 +167,7 @@ export default function AboutSection2() {
                 <ul className="about-list">
                   {[
                     "5 recurring monthly clients since inception",
-                    "3 long-term technology-focused clients",
+                    "3 long term technology-focused clients",
                     "1 active project-based training engagement",
                     "4 additional clients in the pipeline with no prospecting"
                   ].map((item, index) => (
