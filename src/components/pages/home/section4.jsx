@@ -47,7 +47,7 @@ export default function Section4() {
               </p>
 
               <p>
-                These are not symbolic efforts — they are structured, intentional, and measurable,
+                These are not symbolic efforts, they are structured, intentional, and measurable,
                 designed to ensure women don’t get lost in the system and have real access to
                 guidance, community, and opportunity.
               </p>
